@@ -23,7 +23,7 @@
 
 :root {
     --main-font: "Domine", serif;
-    
+    --header-font: "Anton", san-serif;
 
     font-family: var(--main-font);
 }
@@ -73,7 +73,7 @@ header {
 }
 
 header h1 {
-    font-family: "Anton", san-serif;
+    font-family: var(--header-font);
     font-variant: small-caps;
     font-size: 40pt;
     margin-top: 0.2em;
@@ -95,6 +95,10 @@ header #the {
     font-family: var(--main-font);
     position: relative;
     top: -0.05em;
+}
+
+header #big {
+    text-transform: uppercase;
 }
 
 
