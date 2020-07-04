@@ -69,6 +69,23 @@ header h1 {
     font-size: 40pt;
 }
 
+header #the {
+    /*writing-mode: sideways-lr;
+    font-size: 26pt;
+    text-transform: uppercase;
+    font-variant: none;
+    margin-right: -0.2em;*/
+}
+
+header #the {
+    font-variant: small-caps;
+    text-transform: lowercase;
+    font-variant-position: super;
+    font-family: "Times New Roman", serif;
+    position: relative;
+    top: -0.2em;
+}
+
 
 
 /* -- article -- */
