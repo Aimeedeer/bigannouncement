@@ -1,0 +1,77 @@
+:root {
+    box-sizing: border-box;
+}
+
+:root {
+    --header-background-color: red;
+    --header-text-color: white;
+
+    --footer-background-color: black;
+    --footer-text-color: white;
+    --footer-link-color: orange;
+
+    --main-background-color: white;
+    --main-text-color: black;
+}
+
+body {
+    min-height: 100vh; /* fill the viewport */
+    background-color: var(--footer-background-color);
+}
+
+header > *,
+article > *,
+footer > * {
+    max-width: 80ch;
+    margin: auto;
+}
+
+header {
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+article {
+    padding: 4rem 0 4rem 0;
+}
+
+footer {
+    padding: 2rem 0 2rem 0;
+}
+
+
+/* -- header -- */
+
+
+header {
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
+}
+
+
+
+/* -- article -- */
+
+article {
+    background-color: var(--main-background-color);
+    color: var(--main-text-color);
+}
+
+
+/* -- footer -- */
+
+footer {
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
+}
+
+footer a,
+footer a:hover,
+footer a:visited
+{
+    color: var(--footer-link-color);
+}
