@@ -75,3 +75,32 @@ footer a:visited
 {
     color: var(--footer-link-color);
 }
+
+footer {
+    text-align: center;
+}
+
+footer p {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+footer p:first-child {
+    margin-top: 1rem;
+}
+
+
+/* -- other -- */
+
+#edit-link {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+#edit-link::before {
+    content: "‖ ";
+}
+
+#edit-link::after {
+    content: " ‖";
+}
