@@ -6,8 +6,10 @@
     /* https://coolors.co/a44200-f7b32b-f5f5f5-1c190d-e52210 */
 
     --redish: #e52210;
+    --light-redish: #e56250;
     --whiteish: #f5f5f5;
     --blackish: #1c190d;
+    --blackish: #4c494d;
     --yellowish: #F7B32B;
     
     --header-background-color: var(--redish);
@@ -16,9 +18,11 @@
     --footer-background-color: var(--blackish);
     --footer-text-color: var(--whiteish);
     --footer-link-color: var(--yellowish);
+    --footer-link-color: var(--light-redish);
 
     --main-background-color: var(--whiteish);
     --main-text-color: var(--blackish);
+    --main-link-color: var(--redish);
 }
 
 :root {
@@ -34,7 +38,7 @@ body {
 }
 
 header > *,
-article > *,
+main > *,
 footer > * {
     max-width: 40rem;
     margin: auto;
@@ -51,7 +55,7 @@ header h1 {
     margin-bottom: 0;
 }
 
-article {
+main {
     padding: 4rem 0 4rem 0;
 }
 
@@ -103,11 +107,18 @@ header #big {
 
 
 
-/* -- article -- */
+/* -- main -- */
 
-article {
+main {
     background-color: var(--main-background-color);
     color: var(--main-text-color);
+}
+
+main a,
+main a:hover,
+main a:visited
+{
+    color: var(--main-link-color);
 }
 
 
@@ -153,4 +164,21 @@ footer p:first-child {
 
 #edit-link::after {
     content: " ‖";
+}
+
+
+/* -- text styles -- */
+
+main p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+    margin-top: 2rem;
 }
