@@ -21,6 +21,13 @@
     --main-text-color: var(--blackish);
 }
 
+:root {
+    --main-font: "Domine", serif;
+    
+
+    font-family: var(--main-font);
+}
+
 body {
     min-height: 100vh; /* fill the viewport */
     background-color: var(--footer-background-color);
@@ -67,6 +74,8 @@ header h1 {
     font-family: "Anton", san-serif;
     font-variant: small-caps;
     font-size: 40pt;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
 }
 
 header #the {
@@ -79,11 +88,11 @@ header #the {
 
 header #the {
     font-variant: small-caps;
-    text-transform: lowercase;
+    text-transform: uppercase;
     font-variant-position: super;
-    font-family: "Times New Roman", serif;
+    font-family: var(--main-font);
     position: relative;
-    top: -0.2em;
+    top: -0.05em;
 }
 
 
