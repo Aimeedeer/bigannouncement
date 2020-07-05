@@ -8,21 +8,21 @@
     --redish: #e52210;
     --light-redish: #e56250;
     --whiteish: #f5f5f5;
-    --blackish: #1c190d;
+    --dark-blackish: #1c190d;
     --blackish: #4c494d;
     --yellowish: #F7B32B;
     
     --header-background-color: var(--redish);
     --header-text-color: var(--whiteish);
 
+    --main-background-color: var(--whiteish);
+    --main-text-color: var(--dark-blackish);
+    --main-link-color: var(--redish);
+
     --footer-background-color: var(--blackish);
     --footer-text-color: var(--whiteish);
     --footer-link-color: var(--yellowish);
     --footer-link-color: var(--light-redish);
-
-    --main-background-color: var(--whiteish);
-    --main-text-color: var(--blackish);
-    --main-link-color: var(--redish);
 }
 
 :root {
