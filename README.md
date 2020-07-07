@@ -4,7 +4,7 @@ An uncensorable website that delivers a single message,
 authored by the individual with the deepest pockets
 (the most ETH).
 
-> [https://bigannouncement.eth](https://bigannouncement.eth)
+> [bigannouncement.eth](https://bigannouncement.eth) (not yet live)
 
 Developed during [HackFS 2020],
 it is a minimal project that demonstrates
@@ -19,4 +19,16 @@ while also drafting a [blog post] about the experience
 and what we are learning.
 
 [hacklog]: doc/hacklog.md
-[blog post]: doc/blog.md
+[blog post]: doc/blogpost.md
+
+
+## MVP Roadmap
+
+- [x] Create UI prototype
+- [ ] Deploy static site to IPFS using go-ipfs / js-ipfs / rust-ipfs first
+- [ ] Deploy static site to IPFS using Fleek via GitHub hooks
+- [ ] Configure ENS domain name
+- [ ] Store message to IPFS using some IPFS service
+- [ ] Store and retrieve message hash from Ethereum
+- [ ] Retrieve and display message from IPFS
+- [ ] Implement bidding on message in ETH
