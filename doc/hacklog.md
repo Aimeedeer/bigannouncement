@@ -6,6 +6,13 @@ This is a brief log of our daily work on
 [tba]: https://github.com/Aimeedeer/bigannouncement
 [HackFS 2020]: https://hackfs.com/
 
+## 2020/07/08
+
+
+### Workshops attended
+
+- [Unstoppable Domains: Onboarding the planet to the decentralized web](https://www.youtube.com/watch?v=Gz3Fv3oZdDM)
+
 
 ## 2020/07/07
 
