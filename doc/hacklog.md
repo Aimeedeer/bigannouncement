@@ -64,6 +64,12 @@ name as deleted projects, so it seems likely the bug has something
 to do with project-renaming.
 
 
+### Workshops attended
+
+- [Getting started building with Textile](https://www.youtube.com/watch?v=IZ8M9m9_uJY)
+
+
+
 ## 2020/07/06
 
 First day of HackFS.
