@@ -25,7 +25,7 @@ and what we are learning.
 ## MVP Roadmap
 
 - [x] Create UI prototype
-- [ ] Deploy static site to IPFS using go-ipfs / js-ipfs / rust-ipfs first
+- [x] Deploy static site to IPFS using go-ipfs / js-ipfs / rust-ipfs first
 - [ ] Deploy static site to IPFS using Fleek via GitHub hooks
 - [ ] Configure ENS domain name
 - [ ] Store message to IPFS using some IPFS service

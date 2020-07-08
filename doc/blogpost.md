@@ -7,3 +7,11 @@ All workshops have been quickly posted to YouTube and are
 findable from the [HackFS schedule][hfs-s]
 
 [hfs-s]: https://hackfs.com/#schedule
+
+
+## Deploying to IPFS
+
+[Fleek] is a service that, primarily, deploys websites to IPFS.
+
+
+[Fleek]: https://fleek.co

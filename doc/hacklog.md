@@ -7,6 +7,37 @@ This is a brief log of our daily work on
 [HackFS 2020]: https://hackfs.com/
 
 
+## 2020/07/07
+
+We experimented with IPFS deployment today,
+using go-ipfs, js-ipfs, [Pinata], and [Fleek].
+
+The version deployed with go-ipfs is here:
+
+> https://ipfs.io/ipfs/QmVW6oTQAVU1XB65jd8rMqbwaY4f5ryGCpya8VLv84HEEz/
+
+[Pinata]: https://pinata.cloud
+[Fleek]: https://fleek.co
+
+It was all fairly straightforward, though Aimee had difficulty
+building and using the js-ipfs tools, mostly because she doesn't
+understand the npm tooling.
+
+Aimee ran into a bug with Fleek:
+
+- Create a Fleek project called bigannouncement
+- Create another project called fooannouncement (I forget the actual name)
+  that uses to the same GitHub repo, and configure it such that it works
+  as expected
+- Delete the bigannouncement project
+- Rename fooannouncement to bigannouncement
+
+After we did this sequence our "bigannouncement" Fleek project seemed
+to be broken. We couldn't change the deployment settings or even
+delete the project. When we tried we got 404 messages.
+
+
+
 ## 2020/07/06
 
 First day of HackFS.
@@ -40,4 +71,3 @@ and [began outlining it][blogpost].
 - [Getting started building with FileCoin](https://www.youtube.com/watch?v=SePJrCLUM0g)
 - [Decentralized messaging and libp2p](https://www.youtube.com/watch?v=69h1zhIdCN0)
 - [HackFS opening ceremony](https://www.youtube.com/watch?v=xMRDhd7goJU)
-
