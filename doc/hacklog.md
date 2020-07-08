@@ -37,7 +37,10 @@ It was all fairly straightforward, though Aimee had difficulty
 building and using the js-ipfs tools, probably because she doesn't
 understand the npm tooling well.
 
-Aimee ran into a bug with Fleek:
+Aimee ran into a number of bugs with Fleek's UI,
+where it was returning 404s unexpectedly.
+
+One scenario in which this happened:
 
 - Create a Fleek project called bigannouncement
 - Create another project called fooannouncement (I forget the actual name)
@@ -53,6 +56,12 @@ delete the project. When we tried we got 404 messages.
 Aimee reported the bug in the Fleek team's slack channel,
 but after some time the UI seemed to sort itself out,
 and she was able to successfully delete and recreate the project.
+
+At the moment she can't click on the "Deploys" tab without getting a 404.
+
+We were creating, deleting, and renaming projects to have the same
+name as deleted projects, so it seems likely the bug has something
+to do with project-renaming.
 
 
 ## 2020/07/06
