@@ -12,16 +12,30 @@ This is a brief log of our daily work on
 We experimented with IPFS deployment today,
 using go-ipfs, js-ipfs, [Pinata], and [Fleek].
 
+Aimee [took some notes on what she learned today][aimee-hackmd].
+
+[aimee-hackmd]: https://hackmd.io/@s7R2jcPBT0q8DCVZ0qUJzg/H15SJ7zJv
+
 The version deployed with go-ipfs is here:
 
 > https://ipfs.io/ipfs/QmVW6oTQAVU1XB65jd8rMqbwaY4f5ryGCpya8VLv84HEEz/
+
+The version deployed with Fleek is here:
+
+> https://ipfs.io/ipfs/QmXv37wN6hmYgU7n1B4G9XykUmhyW8pLGToRQQN3uLDL1A/
+
+It's not clear why the hashes are different -
+whether we deployed two different versions,
+or whether the content is subtly changed by Fleek before deployment.
+I would expect the hashes to be the same whether deployed from go-ipfs
+or Fleek.
 
 [Pinata]: https://pinata.cloud
 [Fleek]: https://fleek.co
 
 It was all fairly straightforward, though Aimee had difficulty
-building and using the js-ipfs tools, mostly because she doesn't
-understand the npm tooling.
+building and using the js-ipfs tools, probably because she doesn't
+understand the npm tooling well.
 
 Aimee ran into a bug with Fleek:
 
@@ -36,6 +50,9 @@ After we did this sequence our "bigannouncement" Fleek project seemed
 to be broken. We couldn't change the deployment settings or even
 delete the project. When we tried we got 404 messages.
 
+Aimee reported the bug in the Fleek team's slack channel,
+but after some time the UI seemed to sort itself out,
+and she was able to successfully delete and recreate the project.
 
 
 ## 2020/07/06

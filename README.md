@@ -26,7 +26,7 @@ and what we are learning.
 
 - [x] Create UI prototype
 - [x] Deploy static site to IPFS using go-ipfs / js-ipfs / rust-ipfs first
-- [ ] Deploy static site to IPFS using Fleek via GitHub hooks
+- [x] Deploy static site to IPFS using Fleek via GitHub hooks
 - [ ] Configure ENS domain name
 - [ ] Store message to IPFS using some IPFS service
 - [ ] Store and retrieve message hash from Ethereum
