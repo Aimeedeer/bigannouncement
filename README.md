@@ -4,7 +4,7 @@ An uncensorable website that delivers a single message,
 authored by the individual with the deepest pockets
 (the most ETH).
 
-> [bigannouncement.eth](https://bigannouncement.eth) (not yet live)
+> [bigannouncement.eth](https://bigannouncement.eth)
 
 Developed during [HackFS 2020],
 it is a minimal project that demonstrates
