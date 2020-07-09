@@ -8,22 +8,43 @@ This is a brief log of our daily work on
 
 ## 2020/07/08
 
-### Blockchain domain service try
+Today we worked on setting up our domain names, using ENS and Unstoppable Domains.
 
-**[ENS](https://ens.domains/)**
-Bigannouncement.eth works!
-- I couldn't find any useful documentation to help me put my website-content hash to the domain.
+### [ENS](https://ens.domains/)
+
+- I (Aimee) couldn't find any useful documentation to help me put my website-content hash to the domain.
 - I finally found a video [Tutorial: How to Host Your Website Using ENS+IPFS](https://www.youtube.com/watch?v=oA4oOY5zgU0), that helped me with my deployment.
   - She explained `Resolver`
-  - At 3:16, she clicked the up right side of `Records`, which I didn't see that at all!
-  - Now we talk -- I finally know where to put my hash content
+  - At 3:16, she clicked the up right side of `Records`, which I see didn't at all on my own!
+  - I finally know where to put my content hash.
+    Here I had to precede the hash with `/ipfs/`, whereas with Unstoppable Domains I did not.
   - Though it took a while to show our webpage. Ethereum tx confirmed slow as usual
--  I spent 2.11 USD valued Ether gas fee for the first deployment tries. I wonder it would be costly for hosting a frequently updated website.
+-  I spent 2.11 USD valued Ether gas fee for the first deployment tries. It might be costly for hosting a frequently updated website.
 
-**[Unstoppable Domains](https://unstoppabledomains.com/)**
+Finally [bigannouncement.eth] works! (If you have the appropriate browser extension)
+
+[bigannouncement.eth]: https://bigannouncement.eth
+
+
+### [Unstoppable Domains](https://unstoppabledomains.com/)
+
 Registered bigannouncement.crypto domain. Thanks to the Unstoppable team!
-- It might take up to 72 hours to change through.
-- I installed the Unstoppable extension on Brave, and it crashed when I visited bigannouncement.crypto.
+
+- There was a warning that with high Ethereum traffic, it might take up to 72 hours for changes to go through.
+  Ours went through in a few minutes though.
+- There isn't as much browser support for Unstoppable Domains yet as there is for ENS
+- I installed the Unstoppable extension on Brave, and it crashed when I visited bigannouncement.crypto,
+  so I haven't actually seen the domain working yet.
+
+### Concerns
+
+As has been the case with our previous Dapp experiences,
+interacting with Ethereum through the web was slow,
+unreliable, and frustrating.
+
+It would be nice to set up our CI to update the CID of our domain names every time we
+deploy, but so far we don't know how to do it. For the purposes of this hackathon
+it's probably fine if we don't figure that out.
 
 ### Workshops attended
 
