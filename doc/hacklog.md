@@ -8,11 +8,28 @@ This is a brief log of our daily work on
 
 ## 2020/07/08
 
+### Blockchain domain service try
+
+**[ENS](https://ens.domains/)**
+Bigannouncement.eth works!
+- I couldn't find any useful documentation to help me put my website-content hash to the domain.
+- I finally found a video [Tutorial: How to Host Your Website Using ENS+IPFS](https://www.youtube.com/watch?v=oA4oOY5zgU0), that helped me with my deployment.
+  - She explained `Resolver`
+  - At 3:16, she clicked the up right side of `Records`, which I didn't see that at all!
+  - Now we talk -- I finally know where to put my hash content
+  - Though it took a while to show our webpage. Ethereum tx confirmed slow as usual
+-  I spent 2.11 USD valued Ether gas fee for the first deployment tries. I wonder it would be costly for hosting a frequently updated website.
+
+**[Unstoppable Domains](https://unstoppabledomains.com/)**
+Registered bigannouncement.crypto domain. Thanks to the Unstoppable team!
+- It might take up to 72 hours to change through.
+- I installed the Unstoppable extension on Brave, and it crashed when I visited bigannouncement.crypto.
 
 ### Workshops attended
 
 - [Unstoppable Domains: Onboarding the planet to the decentralized web](https://www.youtube.com/watch?v=Gz3Fv3oZdDM)
-
+- [The Graph: Indexing the New Economy](https://www.youtube.com/watch?v=e5OwjDao3MA)
+- [How Filecoin Works: an in-depth system overview](https://www.youtube.com/watch?v=P28aNAdZDi4)
 
 ## 2020/07/07
 

@@ -1,6 +1,6 @@
 # IPFS Learning (updating)
 
-###### tags: `hackathon` `ipfs`
+###### tags:  `ipfs` `hackathon` `HackFS`
 
 [ToC]
 
@@ -70,7 +70,7 @@ I encountered bugs when using **Fleek**:
 - I deployed **SiteC** from the same GitHub source successfully
 - Then I want to check the `DEPLOYS` tab, and it showed me 404 page again
 - I reported the screenshot to the same Slack channel
-
+- Fleek team responsed fast!
   
 #### 2020/07/06
 
@@ -90,6 +90,7 @@ Then installed IPFS -g
 ```
 $ npm install -g ipfs
 ```
+
 Finally one warning left:
 prometheus-gc-stats@0.6.2 requires a peer of prom-client@>= 10 < 12 but none is installed. You must install peer dependencies yourself.
 
@@ -102,8 +103,8 @@ $ ipfs init
 ```
 
 > initializing IPFS node at /Users/aimeez/.ipfs
-Error: ipfs configuration file already exists!
-Reinitializing would overwrite your keys.
+> Error: ipfs configuration file already exists!
+> Reinitializing would overwrite your keys.
 
 
 
