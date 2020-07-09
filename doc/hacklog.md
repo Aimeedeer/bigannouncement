@@ -18,7 +18,7 @@ Today we worked on setting up our domain names, using ENS and Unstoppable Domain
   - At 3:16, she clicked the up right side of `Records`, which I see didn't at all on my own!
   - I finally know where to put my content hash.
     Here I had to precede the hash with `/ipfs/`, whereas with Unstoppable Domains I did not.
-  - Though it took a while to show our webpage. Ethereum tx confirmed slow as usual
+  - Though it took a while to show our webpage. Ethereum tx confirmed slowly.
 -  I spent 2.11 USD valued Ether gas fee for the first deployment tries. It might be costly for hosting a frequently updated website.
 
 Finally [bigannouncement.eth] works! (If you have the appropriate browser extension)
@@ -38,9 +38,9 @@ Registered bigannouncement.crypto domain. Thanks to the Unstoppable team!
 
 ### Concerns
 
-As has been the case with our previous Dapp experiences,
+As has sometimes been the case with our previous Dapp experiences,
 interacting with Ethereum through the web was slow,
-unreliable, and frustrating.
+unpredictable, and frustrating.
 
 It would be nice to set up our CI to update the CID of our domain names every time we
 deploy, but so far we don't know how to do it. For the purposes of this hackathon
