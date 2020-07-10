@@ -1,6 +1,6 @@
 # IPFS Learning (updating)
 
-###### tags:  `ipfs` `hackathon` `HackFS`
+###### tags:  `hackfs` `hackathon` `ipfs`
 
 [ToC]
 
@@ -32,7 +32,6 @@ Fleek is like Netlify. I deployed [Big Announcement](https://github.com/Aimeedee
 
 ## Books
 - [The IPFS Primer](https://flyingzumwalt.gitbooks.io/decentralized-web-primer/SUMMARY.html) 
-
 
 ## Articles
 - [Publishing my Website on IPFS](http://justinpoliachik.com/posts/2020-03_ipfs_website/)

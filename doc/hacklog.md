@@ -6,6 +6,20 @@ This is a brief log of our daily work on
 [tba]: https://github.com/Aimeedeer/bigannouncement
 [HackFS 2020]: https://hackfs.com/
 
+## 2020/07/09
+
+We wrote simple JavaScript to test the button function today
+in preparation for calling APIs to store data on IPFS.
+
+We ran out of beer today, which is something of emergency.
+
+### Workshop attended
+
+- [Fleek: Getting Started with Space Daemon](https://www.youtube.com/watch?v=f5LRSpGGuQE)
+  - [Space Daemon](https://github.com/FleekHQ/space-daemon). The Space Daemon packages together IPFS, Textile Threads/Buckets, and Textile Powergate (Filecoin*) into one easy to install Daemon to make it easy to build peer to peer and privacy focused apps.
+- [Piñata Cloud: The Broken Token](https://www.youtube.com/watch?v=0iuAvE-a0fI)
+
+
 ## 2020/07/08
 
 Today we worked on setting up our domain names, using ENS and Unstoppable Domains.
