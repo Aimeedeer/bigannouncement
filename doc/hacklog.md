@@ -8,12 +8,13 @@ This is a brief log of our daily work on
 
 ## 2020/07/09
 
-We wrote simple JavaScript to test the button function today
+Today we just hooked up some JavaScript to our input form,
 in preparation for calling APIs to store data on IPFS.
+We don't know much JavaScript so it's slow incremental progress.
 
 We ran out of beer today, which is something of emergency.
 
-### Workshop attended
+### Workshops attended
 
 - [Fleek: Getting Started with Space Daemon](https://www.youtube.com/watch?v=f5LRSpGGuQE)
   - [Space Daemon](https://github.com/FleekHQ/space-daemon). The Space Daemon packages together IPFS, Textile Threads/Buckets, and Textile Powergate (Filecoin*) into one easy to install Daemon to make it easy to build peer to peer and privacy focused apps.
