@@ -6,6 +6,36 @@ This is a brief log of our daily work on
 [tba]: https://github.com/Aimeedeer/bigannouncement
 [HackFS 2020]: https://hackfs.com/
 
+## 2020/07/10
+
+We didn't write any code today, just attended two workshops.
+
+### Workshops attended
+
+- [Connecting ETH to IPFS](https://www.youtube.com/watch?v=vqrLr5eOjLo). Austin shared an awesome session with us!
+  - [Programming Decentralized Money](https://medium.com/@austin_48503/programming-decentralized-money-300bacec3a4f)
+  - [Decentralized Deployment](https://medium.com/@austin_48503/decentralized-deployment-7d975c9d5016)
+  - [Connecting ETH to IPFS](https://medium.com/@austin_48503/tl-dr-scaffold-eth-ipfs-20fa35b11c35)
+- [Building an App with Filecoin from scratch - using Slate Components & Powergate](https://www.youtube.com/watch?v=FJjPMKRy8xQ). Some interesting Q&As:
+>Andrew: while a single file could be stored by multiple users. a single user would know if they had already stored the file (since powergate will know the CID already) that is to say, it doesn’t monitor the entire network of deals. just what it knows locally
+
+>Ahmed: How do I know when Powergate Testnet finishes syncing?
+>Andrew said it might take a day to sync
+
+>Aaron: Easiest to use the lotus cli. There is a lotus sync wait command. Or something like that
+
+>Jeromy: The hackFS devnet ‘nerpa’ should sync quite fast
+
+>Andrew: _stops holding breath_
+
+>Juan: (This is awesome because it’s how real programming works — watching debug => super useful)
+
+>Aaron: You can configure whether you want ipfs storage, filecoin, or both 
+
+>Ahmed: So basically with the Powergate CID Config
+
+>Aaron: yep
+
 ## 2020/07/09
 
 Today we just hooked up some JavaScript to our input form,
