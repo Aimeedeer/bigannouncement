@@ -6,6 +6,122 @@ This is a brief log of our daily work on
 [tba]: https://github.com/Aimeedeer/bigannouncement
 [HackFS 2020]: https://hackfs.com/
 
+
+## 2020/07/12
+
+Today we're trying to write to IPFS from our decentralized website.
+
+We don't want to run our own servers. Our ultimate goal is to write
+an app that cannot be censored.
+
+We're starting by looking at HackFS sponsors' APIs ([Pinata], [Textile], [Fleek]) to
+see if any meet our needs.
+
+[Pinata]: https://pinata.cloud/
+[Textile]: https://textile.io/
+[Fleek]: https://fleek.co/
+
+From a cursory read of the docs, we don't think any of these services do what we
+want. For our purposes they either seem to require running our own server or
+using account secrets in an incorrect way.
+
+
+### Evaluating IPFS services
+
+_Pinata_'s APIs look nice and simple, but every request requires a secret API key,
+which seems to mean it can't be used directly from a web client.
+
+This seems like a problem we're likely to encounter with any third-party service.
+
+_Textile_ has something called "UserAuth" that might be appropriate - I can
+imagine just creating a single global user and letting everybody that interacts
+with the website be that user.
+
+But presumably that means that anybody could abuse that account and force
+Textile shut it down.
+
+Textile does interestingly have a variety of user authentication providers,
+one of which is Metamask. Since our app flow uses Ethereum anyway, that
+may mean that we could harness the user's Metamask instance for their authentication,
+without any extra annoyances beyond those already required to use Metamask
+(or some other Ethereum wallet).
+
+But Textile also seems to require running one's own server as part of the
+authentication process.
+
+Further, Textile seems very complex. We are overwhelmed reading the docs.
+Our use case seems so simple.
+
+All I want is a decentralized way to write and pin _one message_ to IPFS.
+
+_Fleek_ has buckets, and it looks like each bucket can have its own secret API key,
+but it also would seemingly be prone to abuse if we shared the secret key in
+our web app.
+
+_js-ipfs_ on the other hand can seemingly run a full node in the browser,
+presumably with libp2p over WebRTC. I would hope it doesn't require
+us to host a server, but don't know.
+
+
+### An imaginary design
+
+I don't think any of these third-party services are what I want - they
+all seem to be adding a central point of authority and failure on top
+of the distributed system.
+
+Here's a decentralized design that seems to work for me:
+
+- Run js-ipfs in the browser as part of the web page
+- Publish message to js-ipfs
+- Write message hash to an Ethereum contract for retrieval later
+
+At that point everything is published, but the message is not
+pinned, so might disappear as soon as the web page is closed
+and the js-ipfs instance shut down.
+
+To solve that we can do a variety of mitigations:
+
+1) Have the client request the published message content
+   via a variety of IPFS HTTP gateways.
+    - This should have the effect of, temporarily at least,
+      distributing the content through some number of nodes
+      in the IPFS network.
+2) Run a server (potentially behind TOR) that:
+    - Listens to the Ethereum contract events
+    - Requests and pins the message via IPFS
+    - But is _not_ connected directly to the client
+
+Is there any existing service that can do this?
+
+From what I know right now (which is not a lot), what would be
+ideal is a service that monitors the ENS changes of a single
+domain, and immediately pins its content. That way I could
+publish via js-ipfs in the client, update some ENS address
+via Metamask, and have the content immediately pinned without
+ever making a request to a centralized service.
+
+That ENS-pinning service may also be a centralized entity,
+but could also be a decentralized network.
+
+Conceptually, this seems to be what FileCoin _could be_,
+but AFAICT there is no bridge between Ethereum (or ENS)
+and FileCoin, either centralized or decentralized.
+
+
+### The plan
+
+So we have an idea of how we _want_ our decentralized architecture to look, but
+don't know how to build it, without doing it ourselves.
+
+For now, we are going to punt - we're going to create a web service
+that holds Pinata keys, have our client to talk to that, and carefully
+design it so that it can't be abused.
+
+We'll get that working, then hack on alternatives. We may end up adding
+resiliancy to the system by having a variety of ways to store our single IPFS
+message. And doing it in a variety of ways will be good practice anyway.
+
+
 ## 2020/07/10
 
 We didn't write any code today, just attended two workshops.
