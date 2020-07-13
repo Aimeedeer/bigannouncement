@@ -12,7 +12,8 @@ This is a brief log of our daily work on
 Today we're trying to write to IPFS from our decentralized website.
 
 We don't want to run our own servers. Our ultimate goal is to write
-an app that cannot be censored.
+an app that cannot be censored, and interposing our own server
+into the application flow would not meet our requirements.
 
 We're starting by looking at HackFS sponsors' APIs ([Pinata], [Textile], [Fleek]) to
 see if any meet our needs.
