@@ -11,6 +11,9 @@ This is a brief log of our daily work on
 
 Today we're trying to write to IPFS from our decentralized website.
 
+Our application needs to store just a single "message" at a time to IPFS. That
+message's content hash is stored to Ethereum for later retrieval.
+
 We don't want to run our own servers. Our ultimate goal is to write
 an app that cannot be censored, and interposing our own server
 into the application flow would not meet our requirements.
@@ -22,9 +25,11 @@ see if any meet our needs.
 [Textile]: https://textile.io/
 [Fleek]: https://fleek.co/
 
-From a cursory read of the docs, we don't think any of these services do what we
-want. For our purposes they either seem to require running our own server or
-using account secrets in an incorrect way.
+From a cursory read of the docs, we don't think any of them quite meet our
+requirements. For our purposes they either seem to require running our own
+server or using account secrets in an incorrect way.
+
+We could use help figuring out how to meet our requirments.
 
 
 ### Evaluating IPFS services
@@ -36,10 +41,8 @@ This seems like a problem we're likely to encounter with any third-party service
 
 _Textile_ has something called "UserAuth" that might be appropriate - I can
 imagine just creating a single global user and letting everybody that interacts
-with the website be that user.
-
-But presumably that means that anybody could abuse that account and force
-Textile shut it down.
+with the website be that user. But presumably that means that anybody could
+abuse that account and force Textile shut it down.
 
 Textile does interestingly have a variety of user authentication providers,
 one of which is Metamask. Since our app flow uses Ethereum anyway, that
@@ -66,7 +69,7 @@ us to host a server, but don't know.
 
 ### An imaginary design
 
-I don't think any of these third-party services are what I want - they
+I don't think any of these third-party services meet our requirements - they
 all seem to be adding a central point of authority and failure on top
 of the distributed system.
 
@@ -101,8 +104,8 @@ publish via js-ipfs in the client, update some ENS address
 via Metamask, and have the content immediately pinned without
 ever making a request to a centralized service.
 
-That ENS-pinning service may also be a centralized entity,
-but could also be a decentralized network.
+That ENS-pinning service may also be a centralized entity, but could also be
+multiple centralized entities, or a decentralized network.
 
 Conceptually, this seems to be what FileCoin _could be_,
 but AFAICT there is no bridge between Ethereum (or ENS)
@@ -111,8 +114,7 @@ and FileCoin, either centralized or decentralized.
 
 ### The plan
 
-So we have an idea of how we _want_ our decentralized architecture to look, but
-don't know how to build it, without doing it ourselves.
+We have to go forward in some direction.
 
 For now, we are going to punt - we're going to create a web service
 that holds Pinata keys, have our client to talk to that, and carefully
