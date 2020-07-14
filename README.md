@@ -28,7 +28,7 @@ and what we are learning.
 - [x] Deploy static site to IPFS using go-ipfs / js-ipfs / rust-ipfs first
 - [x] Deploy static site to IPFS using Fleek via GitHub hooks
 - [x] Configure ENS domain name
-- [ ] Store message to IPFS using some IPFS service
+- [ ] Store message to IPFS using js-ipfs
 - [ ] Store and retrieve message hash from Ethereum
 - [ ] Retrieve and display message from IPFS
 - [ ] Implement bidding on message in ETH
