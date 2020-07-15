@@ -54,3 +54,8 @@ Fast response
 ## Friendly community
 - The intro channel is a great way to start talking to the community. People are actively sending information about themselves.
 
+
+## Ways to defeat a dapp
+
+- IPFS
+  - Block all bootstrap nodes

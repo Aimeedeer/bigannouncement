@@ -9,75 +9,93 @@ This is a brief log of our daily work on
 
 ## 2020/07/14
 
-Carson from Textile had a Zoom with us this morning.
-He was helpful, and we decided we could do what we want without textile,
+Today our goal was to write code to store to IPFS from the browser, somehow.
+For real this time.
+
+And we succeeded.
+
+Carson from Textile had a Zoom with us this morning to help us figure out a solution that meets our requirements.
+He was helpful,
+and we decided we could do what we want without Textile,
 just using js-ipfs in the client.
+
+Thanks, Carson.
+For our next,
+undoubtedly more complex project,
+we'll look into Textile again.
 
 So today we are trying to run js-ipfs in the browser based on its
 [examples](https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag).
 
-When we try to reproduce the example in our own code we get errors like
+When we first try to reproduce the example in our own code we see errors in the browser console like
 
 ```
 Firefox can’t establish a connection to the server at wss://lon-1.bootstrap.libp2p.io/p2p/QmSoLMeWqB7YGVLJN3pNLQpmmEk35v6wYtsMGLzSr5QBU3.
 ```
 
-After a lot of experimentation the error goes away,
+After a lot of experimentation the error went away,
 without any code changes.
 Seems it was a transient error,
 perhaps not even a fatal one.
+Maybe that particular bootstrap node was really down.
 
 In the end we did manage to publish a message to IPFS using js-ipfs,
-and verify that it was published used an IPFS gateway.
+and we verify that it was published by requesting the message by content hash from an IPFS gateway.
 
 We managed this by essentially copy-pasting code from
-the [browser-script-tag] example and the [ipfs-101] example.
+the [browser-script-tag] example and the [ipfs-101] js-ipfs examples.
 
 [browser-script-tag]: https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
 [ipfs-101]: https://github.com/ipfs/js-ipfs/tree/master/examples/ipfs-101
 
-It was quite a frustrating experience though.
-The documentation was not easy to use.
+It was quite a frustrating experience though,
+a lot of which is due to our relative inexperience with the npm ecosystem.
+Beyond the transient IPFS bootstrap node error,
+the documentation was not simple to use,
+and seemed insufficient.
+
+The `js-ipfs` [Getting Started] docs are heavy on examples,
+and API documentation,
+but there isn't a clear tutorial-style onboarding-flow in the docs.
+We got started by copy-pasting from examples,
+but didn't feel confident or informed while we were doing it.
+
+[Getting Started]: https://github.com/ipfs/js-ipfs#getting-started
+
 We are working in a browser environment,
 and so far not using npm.
 
 The examples are geared toward npm users,
 expect npm knowledge,
-and casually import npm packages (like 'it-all' and 'it-last')
+and casually import npm packages (like `it-all` and `it-last`)
 that I don't know how to access in the browser without
 setting up npm.
 
-The instructions in the `browser-script-tag` example
-seemed to be incorrect,
+The instructions for executing the `browser-script-tag` example
+seemed to be incorrect, or incomplete,
 building only the full `js-ipfs` repo,
 but not the example itself.
 We were only able to get it running by guessing
 the correct commands and reading `package.json`.
 
-It would probably have been straightforward for someone with a lot of npm experience,
+This would probably all have been straightforward for someone with a lot of npm experience,
 but not us.
 
 The ["IPFS Core API" documentation][core-api] seems frankly wierd.
 
 [core-api]: https://github.com/ipfs/js-ipfs/tree/master/docs/core-api
 
-Just a bunch of ad-hoc Markdown files with no guidelines on how to use the
-API. I am not sure if this is a result of being a cross-language API specification,
+It's a collection of ad-hoc Markdown files with no guidelines on how to use the API,
+or what the various modules represent.
+I am not sure if this is a result of being a cross-product API specification,
 insufficient standards for JavaScript documantation generally, or something else,
 but the docs are not very approachable.
 
 I look at that page wondering how to construct an `Ipfs` node in JavaScript,
-and am lost.
+the first step, and am lost.
 
-This rough doc situation is probably understood since the `js-ipfs`
-[Getting Started] docs focus on reading examples instead of
-tutorials or other explanatory materials.
-
-[Getting Started]: https://github.com/ipfs/js-ipfs#getting-started
-
-Anyway, it was frustrating, but we made progress on the
-next item in our roadmp.
-
+Frustrations aside, we did learn today, and we made progress.
+The path to completing our MVP looks pretty clear.
 
 
 ## 2020/07/12
