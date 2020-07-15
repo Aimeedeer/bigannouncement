@@ -1,22 +1,20 @@
-
 function submit() {
-
-    var confirmmsg = "OK!";
-
+    console.log(Ipfs);
+    
     var ethinput = document.getElementById("eth-input").value;
     var msginput = document.getElementById("msg-input").value;
     console.log(ethinput);
     console.log(msginput);
-
-    if (confirm(ethinput + " Ether for the message: " + msginput)) {
-	confirmmsg = "Great! Let's make it!";
-    } else {
-	confirmmsg = "Tx canceled.";
-    }
-
-    confirm(confirmmsg);
 }
 
 
+document.addEventListener('DOMContentLoaded', async () => {
+    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
+    window.node = node
+
+    const status = node.isOnline() ? 'online' : 'offline'
+
+    console.log(`Node status: ${status}`)
+})
 
 
