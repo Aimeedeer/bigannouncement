@@ -1,3 +1,13 @@
+const last = async (iterator) => {
+    let res
+
+    for await (const entry of iterator) {
+	res = entry
+    }
+
+    return res
+}
+
 function submit() {
     console.log(Ipfs);
     
@@ -16,5 +26,3 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     console.log(`Node status: ${status}`)
 })
-
-
