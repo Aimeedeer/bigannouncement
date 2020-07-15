@@ -1,3 +1,15 @@
+'use strict'
+
+const all = async (iterator) => {
+    const arr = []
+
+    for await (const entry of iterator) {
+	arr.push(entry)
+    }
+
+    return arr
+}
+
 const last = async (iterator) => {
     let res
 
@@ -8,6 +20,22 @@ const last = async (iterator) => {
     return res
 }
 
+document.addEventListener('DOMContentLoaded', async () => {
+    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
+    window.node = node
+
+    const status = node.isOnline() ? 'online' : 'offline'
+
+    console.log(`Node status: ${status}`)
+
+    for await (const file of await node.add({
+	path: 'hello.txt',
+	content: 'The Big Announcement'
+    })) {
+	console.log('Added file:', file.path, file.cid.toString())
+    }
+})
+
 function submit() {
     console.log(Ipfs);
     
@@ -17,12 +45,3 @@ function submit() {
     console.log(msginput);
 }
 
-
-document.addEventListener('DOMContentLoaded', async () => {
-    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
-    window.node = node
-
-    const status = node.isOnline() ? 'online' : 'offline'
-
-    console.log(`Node status: ${status}`)
-})
