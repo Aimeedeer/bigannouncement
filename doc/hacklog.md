@@ -88,8 +88,8 @@ The ["IPFS Core API" documentation][core-api] seems frankly wierd.
 It's a collection of ad-hoc Markdown files with no guidelines on how to use the API,
 or what the various modules represent.
 I am not sure if this is a result of being a cross-product API specification,
-insufficient standards for JavaScript documantation generally, or something else,
-but the docs are not very approachable.
+insufficient standards for JavaScript documentation generally, or something else,
+but the docs are not that approachable.
 
 I look at that page wondering how to construct an `Ipfs` node in JavaScript,
 the first step, and am lost.
