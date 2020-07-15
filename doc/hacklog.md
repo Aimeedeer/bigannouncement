@@ -27,6 +27,58 @@ without any code changes.
 Seems it was a transient error,
 perhaps not even a fatal one.
 
+In the end we did manage to publish a message to IPFS using js-ipfs,
+and verify that it was published used an IPFS gateway.
+
+We managed this by essentially copy-pasting code from
+the [browser-script-tag] example and the [ipfs-101] example.
+
+[browser-script-tag]: https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
+[ipfs-101]: https://github.com/ipfs/js-ipfs/tree/master/examples/ipfs-101
+
+It was quite a frustrating experience though.
+The documentation was not easy to use.
+We are working in a browser environment,
+and so far not using npm.
+
+The examples are geared toward npm users,
+expect npm knowledge,
+and casually import npm packages (like 'it-all' and 'it-last')
+that I don't know how to access in the browser without
+setting up npm.
+
+The instructions in the `browser-script-tag` example
+seemed to be incorrect,
+building only the full `js-ipfs` repo,
+but not the example itself.
+We were only able to get it running by guessing
+the correct commands and reading `package.json`.
+
+It would probably have been straightforward for someone with a lot of npm experience,
+but not us.
+
+The ["IPFS Core API" documentation][core-api] seems frankly wierd.
+
+[core-api]: https://github.com/ipfs/js-ipfs/tree/master/docs/core-api
+
+Just a bunch of ad-hoc Markdown files with no guidelines on how to use the
+API. I am not sure if this is a result of being a cross-language API specification,
+insufficient standards for JavaScript documantation generally, or something else,
+but the docs are not very approachable.
+
+I look at that page wondering how to construct an `Ipfs` node in JavaScript,
+and am lost.
+
+This rough doc situation is probably understood since the `js-ipfs`
+[Getting Started] docs focus on reading examples instead of
+tutorials or other explanatory materials.
+
+[Getting Started]: https://github.com/ipfs/js-ipfs#getting-started
+
+Anyway, it was frustrating, but we made progress on the
+next item in our roadmp.
+
+
 
 ## 2020/07/12
 
