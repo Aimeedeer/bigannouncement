@@ -7,6 +7,14 @@ This is a brief log of our daily work on
 [HackFS 2020]: https://hackfs.com/
 
 
+## 2020/07/14
+
+Carson from Textile had a Zoom with us this morning.
+He was helpful, and we decided we could do what we want without textile,
+just using js-ipfs in the client.
+
+So today we are trying to run js-ipfs in the browser based on its [examples](https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag).
+
 ## 2020/07/12
 
 Today we're trying to write to IPFS from our decentralized website.
