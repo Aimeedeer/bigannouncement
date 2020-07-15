@@ -28,20 +28,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     console.log(`Node status: ${status}`)
 
+})
+
+async function submit() {
+    let node = window.node;
+
+    var ethinput = document.getElementById("eth-input").value;
+    var msginput = document.getElementById("msg-input").value;
+    
+    console.log(ethinput);
+    console.log(msginput);
+
     for await (const file of await node.add({
-	path: 'hello.txt',
-	content: 'The Big Announcement'
+	path: 'message.txt',
+	content: msginput
     })) {
 	console.log('Added file:', file.path, file.cid.toString())
     }
-})
-
-function submit() {
-    console.log(Ipfs);
-    
-    var ethinput = document.getElementById("eth-input").value;
-    var msginput = document.getElementById("msg-input").value;
-    console.log(ethinput);
-    console.log(msginput);
 }
 
