@@ -13,7 +13,20 @@ Carson from Textile had a Zoom with us this morning.
 He was helpful, and we decided we could do what we want without textile,
 just using js-ipfs in the client.
 
-So today we are trying to run js-ipfs in the browser based on its [examples](https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag).
+So today we are trying to run js-ipfs in the browser based on its
+[examples](https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag).
+
+When we try to reproduce the example in our own code we get errors like
+
+```
+Firefox can’t establish a connection to the server at wss://lon-1.bootstrap.libp2p.io/p2p/QmSoLMeWqB7YGVLJN3pNLQpmmEk35v6wYtsMGLzSr5QBU3.
+```
+
+After a lot of experimentation the error goes away,
+without any code changes.
+Seems it was a transient error,
+perhaps not even a fatal one.
+
 
 ## 2020/07/12
 
