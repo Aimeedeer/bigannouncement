@@ -1,5 +1,41 @@
 'use strict'
 
+const address = '0x2812bCb0f907111BFAe3af46d30f79Fd613d4F2a';
+const abi = [
+    {
+	"inputs": [
+	    {
+		"internalType": "string",
+		"name": "newMessage",
+		"type": "string"
+	    }
+	],
+	"name": "setMessage",
+	"outputs": [],
+	"stateMutability": "nonpayable",
+	"type": "function"
+    },
+    {
+	"inputs": [],
+	"stateMutability": "nonpayable",
+	"type": "constructor"
+    },
+    {
+	"inputs": [],
+	"name": "message",
+	"outputs": [
+	    {
+		"internalType": "string",
+		"name": "",
+		"type": "string"
+	    }
+	],
+	"stateMutability": "view",
+	"type": "function"
+    }
+];
+
+
 const all = async (iterator) => {
     const arr = [];
 
@@ -38,6 +74,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     window.web3 = web3;
 
+    var contract = new web3.eth.Contract(abi, address, );
+    console.log(contract);
+
+    var message = await contract.methods.message().call();
+    console.log(message);
 })
 
 async function submit() {
