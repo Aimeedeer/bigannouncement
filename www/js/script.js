@@ -1,32 +1,41 @@
 'use strict'
 
 const all = async (iterator) => {
-    const arr = []
+    const arr = [];
 
     for await (const entry of iterator) {
-	arr.push(entry)
+	arr.push(entry);
     }
 
-    return arr
+    return arr;
 }
 
 const last = async (iterator) => {
-    let res
+    let res;
 
     for await (const entry of iterator) {
-	res = entry
+	res = entry;
     }
 
-    return res
+    return res;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
-    window.node = node
+    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() });
+    window.node = node;
 
-    const status = node.isOnline() ? 'online' : 'offline'
+    const status = node.isOnline() ? 'online' : 'offline';
 
-    console.log(`Node status: ${status}`)
+    console.log(`Node status: ${status}`);
+
+    console.log(`Web3: ${Web3}`);
+    console.log(`Web3.givenProvider: ${Web3.givenProvider}`);
+
+    var web3 = new Web3(Web3.givenProvider);
+
+    console.log(`web3: ${web3}`);
+    
+    window.web3 = web3;
 
 })
 
