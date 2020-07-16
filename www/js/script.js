@@ -28,12 +28,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     console.log(`Node status: ${status}`);
 
-    console.log(`Web3: ${Web3}`);
-    console.log(`Web3.givenProvider: ${Web3.givenProvider}`);
+    console.log(Web3);
+    console.log(Web3.givenProvider);
 
     var web3 = new Web3(Web3.givenProvider);
 
-    console.log(`web3: ${web3}`);
+    console.log('web3');
+    console.log(web3);
     
     window.web3 = web3;
 
