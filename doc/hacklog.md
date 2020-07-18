@@ -30,6 +30,38 @@ Thanks to @Jacob Heun's help:
 >`NODE_ENV=development npm run build`
 
 
+Then we met a new error.
+Because the [changes in js-ipfs](https://github.com/ipfs/js-ipfs/commit/1760b8928dac14b3abcfa4a889042f0d7a956386#diff-67d7a394e5cbbebef42656d6d9c2d30bf) 2 days ago, there is another new error in our code.
+Then we need to change it according to the changes of js-ipfs,
+from
+
+```JavaScript
+for await (const file of await node.add({	
+    path: 'message.txt',		
+    content: msginput		
+})) {	  
+    console.log('Added file:', file.path, file.cid.toString());	
+}
+
+```
+
+to
+
+```JavaScript
+
+var addedNode = node.add({
+    path: 'message.txt',
+    content: msginput
+});
+
+console.log(addedNode);
+var addedNode = await addedNode;
+
+console.log('Added file:', addedNode.path, addedNode.cid.toString());
+```
+
+I complained a bit in my [commit message](https://github.com/Aimeedeer/bigannouncement/commit/7aa031883375dbc2a55259ff92f0d49378730955) :).
+
 
 ## 2020/07/17
 
