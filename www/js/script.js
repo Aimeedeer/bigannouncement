@@ -90,11 +90,14 @@ async function submit() {
     console.log(ethinput);
     console.log(msginput);
 
-    for await (const file of await node.add({
-	    path: 'message.txt',
-	    content: msginput
-    })) {
-	    console.log('Added file:', file.path, file.cid.toString());
-    }
+    var addedNode = node.add({
+	path: 'message.txt',
+	content: msginput
+    });
+
+    console.log(addedNode);
+    var addedNode = await addedNode;
+    
+    console.log('Added file:', addedNode.path, addedNode.cid.toString());
 }
 

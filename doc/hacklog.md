@@ -31,7 +31,6 @@ Thanks to @Jacob Heun's help:
 
 
 
-
 ## 2020/07/17
 
 Over the last few days we hacked on a basic [Solidity contract][contract] for storing and retrieving
