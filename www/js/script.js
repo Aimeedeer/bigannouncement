@@ -3,35 +3,35 @@
 const address = '0x2812bCb0f907111BFAe3af46d30f79Fd613d4F2a';
 const abi = [
     {
-	"inputs": [
-	    {
-		"internalType": "string",
-		"name": "newMessage",
-		"type": "string"
-	    }
-	],
-	"name": "setMessage",
-	"outputs": [],
-	"stateMutability": "nonpayable",
-	"type": "function"
+	    "inputs": [
+	        {
+		        "internalType": "string",
+		        "name": "newMessage",
+		        "type": "string"
+	        }
+	    ],
+	    "name": "setMessage",
+	    "outputs": [],
+	    "stateMutability": "nonpayable",
+	    "type": "function"
     },
     {
-	"inputs": [],
-	"stateMutability": "nonpayable",
-	"type": "constructor"
+	    "inputs": [],
+	    "stateMutability": "nonpayable",
+	    "type": "constructor"
     },
     {
-	"inputs": [],
-	"name": "message",
-	"outputs": [
-	    {
-		"internalType": "string",
-		"name": "",
-		"type": "string"
-	    }
-	],
-	"stateMutability": "view",
-	"type": "function"
+	    "inputs": [],
+	    "name": "message",
+	    "outputs": [
+	        {
+		        "internalType": "string",
+		        "name": "",
+		        "type": "string"
+	        }
+	    ],
+	    "stateMutability": "view",
+	    "type": "function"
     }
 ];
 
@@ -40,7 +40,7 @@ const all = async (iterator) => {
     const arr = [];
 
     for await (const entry of iterator) {
-	arr.push(entry);
+	    arr.push(entry);
     }
 
     return arr;
@@ -50,7 +50,7 @@ const last = async (iterator) => {
     let res;
 
     for await (const entry of iterator) {
-	res = entry;
+	    res = entry;
     }
 
     return res;
@@ -91,10 +91,10 @@ async function submit() {
     console.log(msginput);
 
     for await (const file of await node.add({
-	path: 'message.txt',
-	content: msginput
+	    path: 'message.txt',
+	    content: msginput
     })) {
-	console.log('Added file:', file.path, file.cid.toString());
+	    console.log('Added file:', file.path, file.cid.toString());
     }
 }
 
