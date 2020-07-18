@@ -24,7 +24,7 @@ Remix and deploying to the (slow) live network --
 probably running the solidity compiler locally and deploying to a local network --
 but for this simple test it worked fine.
 
-We succeeded at reading the default message stored in the contract,
+We succeeded at reading the default message stored in the contract (via Metamask),
 but haven't yet tried to store a new message to the contract.
 
 We ran into a strange error in our use of js-ipfs.
