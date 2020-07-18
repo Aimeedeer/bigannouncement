@@ -99,7 +99,7 @@ Our next step is going to be writing the content hash of our IPFS message to our
 smart contract.
 
 Hopefully by the end of week 2 we will have an end-to-end working prototype,
-but with our poor velocity going to take some serious heads-down hacking.
+but with our poor velocity it's going to take some serious heads-down hacking.
 
 
 ## 2020/07/14
