@@ -9,31 +9,85 @@ This is a brief log of our daily work on
 
 ## 2020/07/17
 
-We hacked on Solidity contract and made writing messages to Ethereum (tested on Ropsten Test Network), running js-ipfs node in browser.
+Over the last few days we hacked on a basic [Solidity contract][contract] for storing and retrieving
+a single message content hash,
+and connecting to it with web3.js.
 
-We used
-```
+[contract]: ../contracts/BigAnnouncement.sol
+
+We used [Remix] to write, test and deploy the contract to the Ropsten test network.
+
+[Remix]: http://remix.ethereum.org/
+
+In the future we are pretty sure we'll need something more sophisticated than
+Remix and deploying to the (slow) live network --
+probably running the solidity compiler locally and deploying to a local network --
+but for this simple test it worked fine.
+
+We succeeded at reading the default message stored in the contract,
+but haven't yet tried to store a new message to the contract.
+
+We ran into a strange error in our use of js-ipfs.
+
+We've been using the minified version if js-ipfs from the jsdelivr CDN at
+
+```html
 <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
 ```
-for CDN and it worked on Wednesday but it doesn't work today.
-When we submitted a message from update.html page, it showed:
+
+it was working previously, but today we discovered that the browser
+is reporting an error during message upload:
 
 ```
 Uncaught (in promise) TypeError: (intermediate value) is not async iterable
     at submit (script.js:93)
 ```
 
-Then we moved away `min` in and tried `<script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.js"></script>`. It works for us now.
+We don't know how to debug this but on a whim tried the non-minified version at:
 
-So we decide to download the js CDN source instead.
+```html
+<script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.js"></script>
+```
 
-We found the `index.min.js` file at `js-ipfs/packages/ipfs/dist/` but not the `index.js` file we wanted.
+And using this version we do not see the error any more.
 
-We couldn't figure out how to build js-ipfs to non-minified js package.
-I(Aimee) am running `npm run build`, but I only got `index.min.js` from the `dist` directory but not `index.js` that we expected.
+Based on this experience we feel that using js-ipfs from the CDN,
+which may serve us any arbitrary version of the library,
+is unwise,
+and that we should be using our own build of the library.
 
-The js-ipfs repo also doesn't have a release page for downloading built versions.
+So we tried to build js-ipfs.
 
+We found the documentation incomplete.
+As with other JS projects we've experienced,
+experienced JS devs might be able to infer the missing
+instructions,
+but we had a difficult time.
+
+The most obvious missing information in the build instructions
+was to explain _where the output of `npm run build` would be_.
+
+We finally found it at`js-ipfs/packages/ipfs/dist/`,
+but the build process only produced the minified script, `index.min.js'
+(contrary to what the instructions say),
+and we really want the unminified javascript for development.
+
+During this process we had to read a bit about npm, lerna, aegir,
+and webpack, while reading through layers of config files, and
+fighting incompatible npm versions.
+And we didn't succeed.
+
+We could use some help figuring out how to build an unminified js-ipfs for the browser.
+Until somebody explains to us how to build the unminified js-ipfs we'll continue to use
+one from CDN.
+
+We notice that the js-ipfs repo also doesn't have a release page for downloading built versions.
+
+Our next step is going to be writing the content hash of our IPFS message to our Ethereum
+smart contract.
+
+Hopefully by the end of week 2 we will have an end-to-end working prototype,
+but with our poor velocity going to take some serious heads-down hacking.
 
 
 ## 2020/07/14
