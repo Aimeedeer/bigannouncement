@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     window.web3 = web3;
 
-    var contract = new web3.eth.Contract(abi, address, );
+    var contract = new web3.eth.Contract(abi, address);
     console.log(contract);
 
     var message = await contract.methods.message().call();
@@ -94,7 +94,7 @@ async function submit() {
 	path: 'message.txt',
 	content: msginput
     })) {
-	console.log('Added file:', file.path, file.cid.toString())
+	console.log('Added file:', file.path, file.cid.toString());
     }
 }
 

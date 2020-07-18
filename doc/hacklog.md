@@ -7,6 +7,35 @@ This is a brief log of our daily work on
 [HackFS 2020]: https://hackfs.com/
 
 
+## 2020/07/17
+
+We hacked on Solidity contract and made writing messages to Ethereum (tested on Ropsten Test Network), running js-ipfs node in browser.
+
+We used
+```
+<script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
+```
+for CDN and it worked on Wednesday but it doesn't work today.
+When we submitted a message from update.html page, it showed:
+
+```
+Uncaught (in promise) TypeError: (intermediate value) is not async iterable
+    at submit (script.js:93)
+```
+
+Then we moved away `min` in and tried `<script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.js"></script>`. It works for us now.
+
+So we decide to download the js CDN source instead.
+
+We found the `index.min.js` file at `js-ipfs/packages/ipfs/dist/` but not the `index.js` file we wanted.
+
+We couldn't figure out how to build js-ipfs to non-minified js package.
+I(Aimee) am running `npm run build`, but I only got `index.min.js` from the `dist` directory but not `index.js` that we expected.
+
+The js-ipfs repo also doesn't have a release page for downloading built versions.
+
+
+
 ## 2020/07/14
 
 Today our goal was to write code to store to IPFS from the browser, somehow.
