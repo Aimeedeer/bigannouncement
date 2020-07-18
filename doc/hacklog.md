@@ -7,6 +7,31 @@ This is a brief log of our daily work on
 [HackFS 2020]: https://hackfs.com/
 
 
+## 2020/07/18
+
+We built the non-minified index.js from js-ipfs source code and use it to replace the CDN version.
+
+Old one:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.js"></script>
+```
+
+New one:
+
+```html
+<script src="ipfs/index.js"></script>
+```
+
+Thanks to @Jacob Heun's help:
+
+>Aegir, which handles the bundling, minifies by default assuming a production environment.
+>You should be able to get the unminified version setting NODE_ENV to development.
+>`NODE_ENV=development npm run build`
+
+
+
+
 ## 2020/07/17
 
 Over the last few days we hacked on a basic [Solidity contract][contract] for storing and retrieving
