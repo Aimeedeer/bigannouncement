@@ -6,6 +6,8 @@ authored by the individual with the deepest pockets
 
 > [bigannouncement.eth](https://bigannouncement.eth)
 
+> [bigannouncement.crypto](https://bigannouncement.crypto)
+
 Developed during [HackFS 2020],
 it is a minimal project that demonstrates
 the integration of [Ethereum] and [IPFS] with the web.
