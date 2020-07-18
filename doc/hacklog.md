@@ -61,7 +61,7 @@ We don't know how to debug this but on a whim tried the non-minified version at:
 
 And using this version we do not see the error.
 
-Based on this experience we thank that using js-ipfs (or web3.js) from the CDN,
+Based on this experience we think that using js-ipfs (or web3.js) from the CDN,
 which may serve us any arbitrary version of the library,
 is unwise,
 particularly for a website that is intended to be durably uncensorable,
