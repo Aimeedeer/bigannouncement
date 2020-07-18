@@ -27,7 +27,7 @@ but for this simple test it worked fine.
 We succeeded at reading the default message stored in the contract (via Metamask),
 but haven't yet tried to store a new message to the contract.
 
-We ran into a strange error in our use of js-ipfs.
+We ran into a strange error in our use of js-ipfs:
 
 We've been using the minified version if js-ipfs from the jsdelivr CDN at
 
@@ -35,7 +35,7 @@ We've been using the minified version if js-ipfs from the jsdelivr CDN at
 <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
 ```
 
-it was working previously, but today we discovered that the browser
+It was working previously, but today we discovered that the browser
 is reporting an error during message upload:
 
 ```
@@ -51,26 +51,25 @@ We don't know how to debug this but on a whim tried the non-minified version at:
 
 And using this version we do not see the error any more.
 
-Based on this experience we feel that using js-ipfs from the CDN,
+Based on this experience we thank that using js-ipfs (or web3.js) from the CDN,
 which may serve us any arbitrary version of the library,
 is unwise,
+particularly for a website that is intended to be durably uncensorable,
 and that we should be using our own build of the library.
 
 So we tried to build js-ipfs.
 
 We found the documentation incomplete.
-As with other JS projects we've experienced,
-experienced JS devs might be able to infer the missing
-instructions,
+Experienced JS devs might be able to infer the missing instructions,
 but we had a difficult time.
 
 The most obvious missing information in the build instructions
 was to explain _where the output of `npm run build` would be_.
 
 We finally found it at`js-ipfs/packages/ipfs/dist/`,
-but the build process only produced the minified script, `index.min.js'
+but the build process only produced the minified script, `index.min.js`
 (contrary to what the instructions say),
-and we really want the unminified javascript for development.
+and we really want the unminified script for development.
 
 During this process we had to read a bit about npm, lerna, aegir,
 and webpack, while reading through layers of config files, and
@@ -79,9 +78,12 @@ And we didn't succeed.
 
 We could use some help figuring out how to build an unminified js-ipfs for the browser.
 Until somebody explains to us how to build the unminified js-ipfs we'll continue to use
-one from CDN.
+one from CDN,
+but we'll probably curl it into our own static website so we know we are using a consistent revision.
 
 We notice that the js-ipfs repo also doesn't have a release page for downloading built versions.
+
+We are learning a lot and making slow progress.
 
 Our next step is going to be writing the content hash of our IPFS message to our Ethereum
 smart contract.
