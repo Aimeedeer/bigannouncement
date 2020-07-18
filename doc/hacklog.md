@@ -42,6 +42,17 @@ is reporting an error during message upload:
 Uncaught (in promise) TypeError: (intermediate value) is not async iterable at submit (script.js:93)
 ```
 
+The code in question looks like
+
+```js
+    for await (const file of await node.add({
+        path: 'message.txt',
+        content: msginput
+    })) {
+        console.log('Added file:', file.path, file.cid.toString());
+    }
+```
+
 We don't know how to debug this but on a whim tried the non-minified version at:
 
 ```html
