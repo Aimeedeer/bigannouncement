@@ -78,8 +78,8 @@ was to explain _where the output of `npm run build` would be_.
 
 We finally found it at`js-ipfs/packages/ipfs/dist/`,
 but the build process only produced the minified script, `index.min.js`
-(contrary to what the instructions say),
 and we really want the unminified script for development.
+The instructions indicate that the build process should produce an unminified script as well.
 
 During this process we had to read a bit about npm, lerna, aegir,
 and webpack, while reading through layers of config files, and
