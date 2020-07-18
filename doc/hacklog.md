@@ -29,7 +29,7 @@ but haven't yet tried to store a new message to the contract.
 
 We ran into a strange error in our use of js-ipfs:
 
-We've been using the minified version if js-ipfs from the jsdelivr CDN at
+We've been using the minified version of js-ipfs from the jsdelivr CDN at
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
@@ -39,8 +39,7 @@ It was working previously, but today we discovered that the browser
 is reporting an error during message upload:
 
 ```
-Uncaught (in promise) TypeError: (intermediate value) is not async iterable
-    at submit (script.js:93)
+Uncaught (in promise) TypeError: (intermediate value) is not async iterable at submit (script.js:93)
 ```
 
 We don't know how to debug this but on a whim tried the non-minified version at:
