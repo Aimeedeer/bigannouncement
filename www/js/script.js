@@ -79,6 +79,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     var message = await contract.methods.message().call();
     console.log(message);
+
+    var accounts = await web3.eth.requestAccounts();
+    console.log("accounts");
+    console.log(accounts);
+
+    for (var account of accounts) {
+        console.log(account);
+    }
+
+    if (account.length < 1) {
+        return;
+    }
+
+    var account = account[0];
+
+    var res = await contract.methods.setMessage("test").send({from: account});
+    console.log(res);
 })
 
 async function submit() {
