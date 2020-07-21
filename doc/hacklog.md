@@ -7,6 +7,23 @@ This is a brief log of our daily work on
 [HackFS 2020]: https://hackfs.com/
 
 
+## 2020/7/21
+
+Today we are trying to write to our contract.
+This is much more difficult than reading,
+since it requires getting permission from mettamask,
+getting and setting account addresses.
+
+We figure out how to use `eth.requestAccounts`,
+but when we use one of the accounts as the `from` parameter
+to `methed.send` we get an error
+
+```
+Uncaught (in promise) Error: Provided address "0" is invalid, the capitalization checksum test failed, or its an indrect IBAN address which can't be converted.
+```
+
+
+
 ## 2020/07/18
 
 We built the non-minified index.js from js-ipfs source code and use it to replace the CDN version.
