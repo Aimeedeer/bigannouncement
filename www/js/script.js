@@ -87,10 +87,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function submit() {
     let node = window.node;
 
-    var ethinput = document.getElementById("eth-input").value;
     var msginput = document.getElementById("msg-input").value;
     
-    console.log(ethinput);
     console.log(msginput);
 
     var addedNode = node.add({
