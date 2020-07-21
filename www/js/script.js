@@ -39,6 +39,7 @@ const abi = [
 const all = async (iterator) => {
     const arr = [];
 
+
     for await (const entry of iterator) {
 	    arr.push(entry);
     }
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     console.log('web3');
     console.log(web3);
+    web3.eth.getAccounts(console.log);
     
     window.web3 = web3;
 
@@ -80,22 +82,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     var message = await contract.methods.message().call();
     console.log(message);
 
-    var accounts = await web3.eth.requestAccounts();
-    console.log("accounts");
-    console.log(accounts);
-
-    for (var account of accounts) {
-        console.log(account);
-    }
-
-    if (account.length < 1) {
-        return;
-    }
-
-    var account = account[0];
-
-    var res = await contract.methods.setMessage("test").send({from: account});
-    console.log(res);
 })
 
 async function submit() {
@@ -116,5 +102,32 @@ async function submit() {
     var addedNode = await addedNode;
     
     console.log('Added file:', addedNode.path, addedNode.cid.toString());
-}
 
+    //test
+    var contract = new web3.eth.Contract(abi, address);
+    contract.methods.setMessage(addedNode.cid.toString());
+
+    console.log('web3.eth.requestaccounts: ');
+    var addresses = await web3.eth.requestAccounts();
+
+    console.log('accounts[0] -- '+ addresses[0]);
+
+    contract.methods.setMessage(addedNode.cid.toString()).send({from: addresses[0]})
+	.on('transactionHash', function(hash){
+	    console.log('transactionHash');
+	    console.log(hash);
+	})
+	.on('receipt', function(receipt){
+	    console.log('receipt');
+	    console.log(receipt);
+	})
+	.on('confirmation', function(confirmationNumber, receipt){
+	    console.log('confirmation');
+	    console.log(confirmationNumber);
+	    console.log(receipt);
+	})
+	.on('error', function(error){
+	    console.log('error');
+	    console.log(error);
+	});
+}

@@ -45,6 +45,8 @@ findable from the [HackFS schedule][hfs-s]
 - Emphasize that Slack is the only communicating channel
 - Speedy response 
 
+## Weekly checkpoints
+
 ## Organizer and sponsor teams' support
 
 Fast response
