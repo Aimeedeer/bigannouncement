@@ -91,8 +91,8 @@ async function submit() {
     console.log(msginput);
 
     var addedNode = node.add({
-	path: 'message.txt',
-	content: msginput
+	    path: 'message.txt',
+	    content: msginput
     });
 
     console.log(addedNode);
