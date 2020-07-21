@@ -82,9 +82,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     var message = await contract.methods.message().call();
     console.log(message);
 
+    enableSubmitButton();
 })
 
+function disableSubmitButton() {
+    let button = document.getElementById("submit-button");
+    console.assert(button);
+    button.disabled = true;
+}
+
+function enableSubmitButton() {
+    let button = document.getElementById("submit-button");
+    console.assert(button);
+    button.disabled = false;
+}
+
 async function submit() {
+    disableSubmitButton();
+
     let node = window.node;
 
     var msginput = document.getElementById("msg-input").value;
