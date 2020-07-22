@@ -1,25 +1,9 @@
 'use strict'
 
-const all = async (iterator) => {
-    const arr = [];
-
-
-    for await (const entry of iterator) {
-	    arr.push(entry);
-    }
-
-    return arr;
-}
-
-const last = async (iterator) => {
-    let res;
-
-    for await (const entry of iterator) {
-	    res = entry;
-    }
-
-    return res;
-}
+console.assert(contractAbi);
+console.assert(contractAddress);
+console.assert(Ipfs);
+console.assert(Web3);
 
 document.addEventListener('DOMContentLoaded', async () => {
     if (typeof Web3 == "undefined") {
@@ -46,13 +30,14 @@ function enableSubmitButton() {
     button.disabled = false;
 }
 
-async function submit() {
-    console.assert(contractAddress);
+async function storeMessage(contractAbi, contractAddress, message) {
     console.assert(contractAbi);
-    console.assert(Ipfs);
-    console.assert(Web3);
+    console.assert(contractAddress);
+    console.assert(message);
 
-    disableSubmitButton();
+    if (Web3.givenProvider == null) {
+        // todo
+    }
 
     const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() });
 
@@ -60,10 +45,6 @@ async function submit() {
     console.log(`Node status: ${status}`);
 
     if (!node.isOnline()) {
-        // todo
-    }
-
-    if (Web3.givenProvider == null) {
         // todo
     }
 
@@ -76,16 +57,9 @@ async function submit() {
     console.log("contract:");
     console.log(contract);
 
-    var message = await contract.methods.message().call();
-    console.log(message);
-
-    var msginput = document.getElementById("msg-input");
-    console.assert(msginput);
-    var msginput = msginput.value;
-    
     var addedNode = node.add({
 	    path: 'message.txt',
-	    content: msginput
+	    content: message
     });
     var addedNode = await addedNode;
     var cid = addedNode.cid.toString();
@@ -127,4 +101,14 @@ async function submit() {
 	    });
 
     console.log("waiting on ethereum");
+}
+
+async function submit() {
+    disableSubmitButton();
+
+    var msginput = document.getElementById("msg-input");
+    console.assert(msginput);
+    var message = msginput.value;
+
+    await storeMessage(contractAbi, contractAddress, message);
 }
