@@ -8,25 +8,53 @@ This is a brief log of our daily work on
 
 ## 2020/7/21
 
-Today we are trying to write to our contract.
-This is much more difficult than reading,
-since it requires getting permission from mettamask,
+Today we are trying to write to our Ethereum contract.
+This is more difficult than reading,
+since it requires getting permission from Metamask,
 getting and setting account addresses.
 
-We figure out how to use `eth.requestAccounts`,
-but when we use one of the accounts as the `from` parameter
-to `methed.send` we get an error
+It was a rewarding day.
+We have nearly completed our MVP per our roadmap:
+we can store a message to IPFS,
+record it's CID on Ethereum,
+then later read the CID from Ethereum,
+and retrieve the content from IPFS,
+all without using any centralized services.
 
-```
-Uncaught (in promise) Error: Provided address "0" is invalid, the capitalization checksum test failed, or its an indrect IBAN address which can't be converted.
-```
+It's pretty badass frankly.
 
-About reading content:
-We first read cid from our Solidity contract, then use an IPFS node to get the content by cid.
+A working prototype can be found here
 
-The [`ipfs.get(ipfsPath, [options])`](https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/FILES.md#ipfsgetipfspath-options) example shows `require('bl/BufferList')`, which is a npm package.
+> https://aimeedeer.github.io/bigannouncement/www/
 
-We want to avoid using npm. So we changed the `BufferList` to `String`. The example code is:
+And the message update code specifically is on this page:
+
+> https://aimeedeer.github.io/bigannouncement/www/update.html
+
+It may not be deployed yet to bigannouncement.eth or bigannouncement.crypto.
+
+Note that this only works with Metamask and only on the Ropsten testnet.
+Don't throw mainnet ETH at it.
+
+When storing the message we have a working
+flow when everything happens successfully,
+with status messages indicating what the UI
+is currently waiting on from either IPFS or Ethereum.
+
+There is no error flow at all,
+so errors will just mysteriously make the UI stall forever.
+
+There's a lot of UI polish to be done yet.
+
+When reading the message on the main page:
+
+- we first read cid from our Solidity contract,
+- then use the js-ipfs node to get the content by cid.
+
+The [`ipfs.get(ipfsPath, [options])`](https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/FILES.md#ipfsgetipfspath-options) example shows `require('bl/BufferList')`, which is an npm package.
+
+We want to avoid using npm,
+so we changed the `BufferList` to `String`. The example code is:
 
 ```JavaScript
 const BufferList = require('bl/BufferList')
@@ -51,25 +79,50 @@ We replaced it as:
 
 ```JavaScript
 
-    const cid = message;
+const cid = ...;
 
-    for await (const file of node.get(cid)) {
-	console.log('file path');
-	console.log(file.path);
+for await (const file of node.get(cid)) {
+    console.log('file path');
+    console.log(file.path);
 
-	if (!file.content) continue;
+    if (!file.content) continue;
 
-	var content = "";
-	for await (var chunk of file.content) {
-	    content = content + chunk;
+    var content = "";
+    for await (var chunk of file.content) {
+        content = content + chunk;
 	}
 
-	console.log(content.trim());
-    }
+    console.log(content.trim());
+}
 ```
 
+And that worked fine.
 
+We did find a corner case where the example we copied from seemed incorrect.
+This line:
 
+```JavaScript
+    if (!file.content) continue;
+```
+
+precludes processing of files with empty contents, since `!file.content` evaluates to `false` for the empty string.
+We changed it instead to
+
+```JavaScript
+    if (typeof file.content == "undefined") continue;
+```
+
+Not sure the purpose of this line,
+we don't know if it's correct,
+but it works in our tests so far.
+
+The only remaining work to do to complete our MVP is implement "bidding",
+such that every update must pay more in ETH that the previous update
+to make changes to the message.
+
+We're at a point where we could definitely use feedback in how we're
+using js-ipfs and web3.js, and how we're presenting IPFS/Ethereum interactions
+in the UI.
 
 
 ## 2020/07/18
