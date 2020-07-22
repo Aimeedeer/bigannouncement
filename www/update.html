@@ -49,21 +49,33 @@
         <div>
           <p>Creating local IPFS node.</p>
         </div>
-        <div class="status-progress"><span>...</span></div>
+        <div class="status-progress">
+          <span class="status-waiting"><img src="images/spinner.svg"/></span>
+          <span class="status-success">☑</span>
+          <span class="status-error">☒</span>
+        </div>
       </div>
       <div id="status-ipfs-store">
         <div>
           <p>Storing message to IPFS.</p>
           <p>Content ID: <span id="status-ipfs-cid">(waiting)</span></p>
         </div>
-        <div class="status-progress"><span>...</span></div>
+        <div class="status-progress">
+          <span class="status-waiting"><img src="images/spinner.svg"/></span>
+          <span class="status-success">☑</span>
+          <span class="status-error">☒</span>
+        </div>
       </div>
       <div id="status-eth-wallet-connect">
         <div>
           <p>Connecting to Ethereum wallet.</p>
           <p>Account: <span id="status-eth-account">(waiting)</span></p>
         </div>
-        <div class="status-progress"><span>...</span></div>
+        <div class="status-progress">
+          <span class="status-waiting"><img src="images/spinner.svg"/></span>
+          <span class="status-success">☑</span>
+          <span class="status-error">☒</span>
+        </div>
       </div>
       <div id="status-eth-transaction">
         <div>
@@ -71,7 +83,11 @@
           <p>Transaction hash: <span id="status-eth-tx-hash">(waiting)</span></p>
           <p>Confirmations: <span id="status-eth-confirmations">(waiting)</span></p>
         </div>
-        <div class="status-progress"><span>...</span></div>
+        <div class="status-progress">
+          <span class="status-waiting"><img src="images/spinner.svg"/></span>
+          <span class="status-success">☑</span>
+          <span class="status-error">☒</span>
+        </div>
       </div>
       <div id="status-eth-complete">
         <div>

@@ -11,6 +11,7 @@
     --greyish: #bbb;
     --blackish: #2c292d;
     --yellowish: #F7B32B;
+    --greenish: #22e510;
     
     --header-background-color: var(--redish);
     --header-text-color: var(--whiteish);
@@ -24,8 +25,10 @@
     --footer-link-color: var(--yellowish);
     --footer-link-color: var(--light-redish);
 
-    --status-border: var(--blackish);
-    --status-inactive: var(--greyish);
+    --status-border-color: var(--blackish);
+    --status-inactive-color: var(--greyish);
+    --status-success-color: var(--greenish);
+    --status-error-color: var(--redish);
 }
 
 :root {
@@ -216,7 +219,7 @@ textarea {
     justify-content: space-between;
     padding: 1rem;
     margin-bottom: 0.5rem;
-    border: 1px solid var(--status-border);
+    border: 1px solid var(--status-border-color);
 }
 
 #status-messages > div:last-child {
@@ -227,7 +230,24 @@ textarea {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 1rem;
+}
+
+.status-progress > * {
+    margin: 1rem;
+    text-align: center;
+}
+
+.status-progress > .status-waiting > img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.status-progress > .status-success {
+    color: var(--status-success-color);
+}
+
+.status-progress > .status-error {
+    color: var(--status-error-color);
 }
 
 #status-eth-complete > div {
@@ -240,9 +260,9 @@ textarea {
 }
 
 #status-messages > div.inactive {
-    color: var(--status-inactive);
+    color: var(--status-inactive-color);
 }
 
 #status-messages > div.inactive {
-    border: 1px solid var(--status-inactive);
+    border: 1px solid var(--status-inactive-color);
 }

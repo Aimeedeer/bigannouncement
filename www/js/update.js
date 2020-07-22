@@ -32,7 +32,7 @@ async function storeMessage(contractAbi, contractAddress, message) {
 
     console.assert(contractAbi);
     console.assert(contractAddress);
-    console.assert(message);
+    console.assert(typeof message != "undefined");
 
 
     uiBeginProcess();
@@ -155,10 +155,46 @@ function enableInputs() {
 
 function deactivateStatusElement(el) {
     el.classList.add("inactive");
+
+    // Find the "status-progress" item
+    for (var progress of el.querySelectorAll(".status-progress")) {
+        // Hide all the subitems
+        for (var progressChild of progress.children) {
+            progressChild.style.display = "none";
+        }
+    }
 }
 
 function activateStatusElement(el) {
     el.classList.remove("inactive");
+}
+
+function toggleStatusWorking(el) {
+    // Find the "status-progress" item
+    for (var progress of el.querySelectorAll(".status-progress")) {
+        // Hide all the subitems
+        for (var progressChild of progress.children) {
+            progressChild.style.display = "none";
+        }
+        // Show the "waiting" item
+        for (var waitingChild of progress.querySelectorAll(".status-waiting")) {
+            waitingChild.style.display = "inline";
+        }
+    }
+}
+
+function toggleStatusSuccess(el) {
+    // Find the "status-progress" item
+    for (var progress of el.querySelectorAll(".status-progress")) {
+        // Hide all the subitems
+        for (var progressChild of progress.children) {
+            progressChild.style.display = "none";
+        }
+        // Show the "success" item
+        for (var waitingChild of progress.querySelectorAll(".status-success")) {
+            waitingChild.style.display = "inline";
+        }
+    }
 }
 
 function uiBeginProcess() {
@@ -171,6 +207,10 @@ function uiBeginProcess() {
         console.log(statusItem);
         deactivateStatusElement(statusItem);
     }
+
+    let reloadButton = document.getElementById("reload-button");
+    console.assert(reloadButton);
+    reloadButton.disabled = true;
 }
 
 function uiBeginIpfsCreate() {
@@ -178,9 +218,14 @@ function uiBeginIpfsCreate() {
     console.assert(statusEl);
 
     activateStatusElement(statusEl);
+    toggleStatusWorking(statusEl);
 }
 
 function uiEndIpfsCreate() {
+    let statusEl = document.getElementById("status-ipfs-create");
+    console.assert(statusEl);
+
+    toggleStatusSuccess(statusEl);
 }
 
 function uiBeginIpfsStore() {
@@ -188,9 +233,20 @@ function uiBeginIpfsStore() {
     console.assert(statusEl);
 
     activateStatusElement(statusEl);
+    toggleStatusWorking(statusEl);
 }
 
 function uiEndIpfsStore(cid) {
+    console.assert(cid);
+    
+    let statusEl = document.getElementById("status-ipfs-store");
+    console.assert(statusEl);
+
+    toggleStatusSuccess(statusEl);
+
+    let cidEl = document.getElementById("status-ipfs-cid");
+    console.assert(cidEl);
+    cidEl.textContent = cid;
 }
 
 function uiBeginEthWalletConnect() {
@@ -198,9 +254,20 @@ function uiBeginEthWalletConnect() {
     console.assert(statusEl);
 
     activateStatusElement(statusEl);
+    toggleStatusWorking(statusEl);
 }
 
 function uiEndEthWalletConnect(account) {
+    console.assert(account);
+
+    let statusEl = document.getElementById("status-eth-wallet-connect");
+    console.assert(statusEl);
+
+    toggleStatusSuccess(statusEl);
+
+    let accountEl = document.getElementById("status-eth-account");
+    console.assert(accountEl);
+    accountEl.textContent = account;
 }
 
 function uiBeginEthTransaction() {
@@ -208,12 +275,28 @@ function uiBeginEthTransaction() {
     console.assert(statusEl);
 
     activateStatusElement(statusEl);
+    toggleStatusWorking(statusEl);
 }
 
 function uiUpdateEthTransactionHash(hash) {
+    console.assert(hash);
+
+    let hashEl = document.getElementById("status-eth-tx-hash");
+    console.assert(hashEl);
+    hashEl.textContent = hash;
 }
 
 function uiUpdateEthTransactionConfirmation(number) {
+    console.assert(typeof number == "number");
+    
+    let statusEl = document.getElementById("status-eth-transaction");
+    console.assert(statusEl);
+
+    toggleStatusSuccess(statusEl);
+
+    let confEl = document.getElementById("status-eth-confirmations");
+    console.assert(confEl);
+    confEl.textContent = number + 1;
 }
 
 function uiUpdateEthTransactionError(error) {
