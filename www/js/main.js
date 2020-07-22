@@ -21,10 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     const cid = message;
 
-    for await (const file of node.ls(cid)) {
-	console.log(file.path)
-    }
-
     for await (const file of node.get(cid)) {
 	console.log('file path');
 	console.log(file.path);
