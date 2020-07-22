@@ -8,6 +8,7 @@
     --redish: #e52210;
     --light-redish: #e56250;
     --whiteish: #f5f5f5;
+    --greyish: #bbb;
     --blackish: #2c292d;
     --yellowish: #F7B32B;
     
@@ -22,6 +23,9 @@
     --footer-text-color: var(--whiteish);
     --footer-link-color: var(--yellowish);
     --footer-link-color: var(--light-redish);
+
+    --status-border: var(--blackish);
+    --status-inactive: var(--greyish);
 }
 
 :root {
@@ -199,6 +203,10 @@ textarea {
 /* -- update status UI -- */
 
 #status-messages {
+    display: none;
+}
+
+#status-messages {
     border: 1px solid var(--blackish);
     padding: 0.5rem;
 }
@@ -208,7 +216,7 @@ textarea {
     justify-content: space-between;
     padding: 1rem;
     margin-bottom: 0.5rem;
-    border: 1px solid var(--blackish);
+    border: 1px solid var(--status-border);
 }
 
 #status-messages > div:last-child {
@@ -229,4 +237,12 @@ textarea {
 
 #reload-button {
     margin: 1rem;
+}
+
+#status-messages > div.inactive {
+    color: var(--status-inactive);
+}
+
+#status-messages > div.inactive {
+    border: 1px solid var(--status-inactive);
 }
