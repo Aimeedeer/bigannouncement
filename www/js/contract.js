@@ -1,7 +1,7 @@
 'use strict'
 
-const address = '0x2812bCb0f907111BFAe3af46d30f79Fd613d4F2a';
-const abi = [
+const contractAddress = '0x2812bCb0f907111BFAe3af46d30f79Fd613d4F2a';
+const contractAbi = [
     {
 	    "inputs": [
 	        {
