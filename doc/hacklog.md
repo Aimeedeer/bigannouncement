@@ -6,10 +6,6 @@ This is a brief log of our daily work on
 [tba]: https://github.com/Aimeedeer/bigannouncement
 [HackFS 2020]: https://hackfs.com/
 
-## 2020/07/19
-
-
-
 ## 2020/7/21
 
 Today we are trying to write to our contract.
@@ -24,6 +20,59 @@ to `methed.send` we get an error
 ```
 Uncaught (in promise) Error: Provided address "0" is invalid, the capitalization checksum test failed, or its an indrect IBAN address which can't be converted.
 ```
+
+About reading content:
+We first read cid from our Solidity contract, then use an IPFS node to get the content by cid.
+
+The [`ipfs.get(ipfsPath, [options])`](https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/FILES.md#ipfsgetipfspath-options) example shows `require('bl/BufferList')`, which is a npm package.
+
+We want to avoid using npm. So we changed the `BufferList` to `String`. The example code is:
+
+```JavaScript
+const BufferList = require('bl/BufferList')
+const cid = 'QmQ2r6iMNpky5f1m4cnm3Yqw8VSvjuKpTcK1X7dBR1LkJF'
+
+for await (const file of ipfs.get(cid)) {
+  console.log(file.path)
+
+  if (!file.content) continue;
+
+  const content = new BufferList()
+  for await (const chunk of file.content) {
+    content.append(chunk)
+  }
+
+  console.log(content.toString())
+}
+
+```
+
+We replaced it as:
+
+```JavaScript
+
+    const cid = message;
+
+    for await (const file of node.ls(cid)) {
+	console.log(file.path)
+    }
+
+    for await (const file of node.get(cid)) {
+	console.log('file path');
+	console.log(file.path);
+
+	if (!file.content) continue;
+
+	var content = "";
+	for await (var chunk of file.content) {
+	    content = content + chunk;
+	}
+
+	console.log(content.trim());
+    }
+```
+
+
 
 
 
