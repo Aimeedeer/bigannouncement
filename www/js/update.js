@@ -30,6 +30,36 @@ function enableSubmitButton() {
     button.disabled = false;
 }
 
+function uiBeginIpfsCreate() {
+}
+
+function uiEndIpfsCreate() {
+}
+
+function uiBeginIpfsStore() {
+}
+
+function uiEndIpfsStore(cid) {
+}
+
+function uiBeginEthWalletConnect() {
+}
+
+function uiEndEthWalletConnect(account) {
+}
+
+function uiBeginEthTransaction() {
+}
+
+function uiUpdateEthTransactionHash(hash) {
+}
+
+function uiUpdateEthTransactionConfirmation(number) {
+}
+
+function uiUpdateEthTransactionError(error) {
+}
+
 async function storeMessage(contractAbi, contractAddress, message) {
     console.assert(contractAbi);
     console.assert(contractAddress);
@@ -38,6 +68,9 @@ async function storeMessage(contractAbi, contractAddress, message) {
     if (Web3.givenProvider == null) {
         // todo
     }
+
+
+    uiBeginIpfsCreate();
 
     const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() });
 
@@ -48,14 +81,10 @@ async function storeMessage(contractAbi, contractAddress, message) {
         // todo
     }
 
-    var web3 = new Web3(Web3.givenProvider);
+    uiEndIpfsCreate();
 
-    console.log('web3:');
-    console.log(web3);
-    
-    var contract = new web3.eth.Contract(contractAbi, contractAddress);
-    console.log("contract:");
-    console.log(contract);
+
+    uiBeginIpfsStore();
 
     var addedNode = node.add({
 	    path: 'message.txt',
@@ -65,6 +94,21 @@ async function storeMessage(contractAbi, contractAddress, message) {
     var cid = addedNode.cid.toString();
     
     console.log('Added file:', addedNode.path, addedNode.cid);
+
+    uiEndIpfsStore(cid);
+    
+
+    uiBeginEthWalletConnect();
+    
+    var web3 = new Web3(Web3.givenProvider);
+
+    console.log('web3:');
+    console.log(web3);
+    
+    var contract = new web3.eth.Contract(contractAbi, contractAddress);
+    console.log("contract:");
+    console.log(contract);
+
 
     var accounts = await web3.eth.requestAccounts();
 
@@ -79,28 +123,37 @@ async function storeMessage(contractAbi, contractAddress, message) {
     console.log("account:");
     console.log(account);
 
+    uiEndEthWalletConnect(account);
+
+
+    uiBeginEthTransaction();
+
     contract.methods
         .setMessage(cid)
         .send({from: account})
 	    .on('transactionHash', function(hash){
 	        console.log('transactionHash');
 	        console.log(hash);
+            uiUpdateEthTransactionHash(hash);
 	    })
 	    .on('receipt', function(receipt){
 	        console.log('receipt');
 	        console.log(receipt);
+            // todo
 	    })
 	    .on('confirmation', function(confirmationNumber, receipt){
 	        console.log('confirmation');
 	        console.log(confirmationNumber);
 	        console.log(receipt);
+            uiUpdateEthTransactionConfirmation(confirmationNumber);
 	    })
 	    .on('error', function(error){
 	        console.log('error');
 	        console.log(error);
+            uiUpdateEthTransactionError(error);
 	    });
 
-    console.log("waiting on ethereum");
+    console.log("waiting on Ethereum");
 }
 
 async function submit() {
