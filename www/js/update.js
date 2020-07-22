@@ -29,9 +29,13 @@ async function submit() {
 }
 
 async function storeMessage(contractAbi, contractAddress, message) {
+
     console.assert(contractAbi);
     console.assert(contractAddress);
     console.assert(message);
+
+
+    uiBeginProcess();
 
     if (Web3.givenProvider == null) {
         // todo
@@ -117,6 +121,10 @@ async function storeMessage(contractAbi, contractAddress, message) {
 	        console.log(confirmationNumber);
 	        console.log(receipt);
             uiUpdateEthTransactionConfirmation(confirmationNumber);
+
+            if (confirmationNumber == 0) {
+                uiEndProcessSuccess();
+            }
 	    })
 	    .on('error', function(error){
 	        console.log('error');
@@ -145,25 +153,61 @@ function enableInputs() {
     msginput.disabled = false;
 }
 
+function deactivateStatusElement(el) {
+    el.classList.add("inactive");
+}
+
+function activateStatusElement(el) {
+    el.classList.remove("inactive");
+}
+
+function uiBeginProcess() {
+    let statusContainer = document.getElementById("status-messages");
+    console.assert(statusContainer);
+
+    statusContainer.style.display = "block";
+
+    for (let statusItem of statusContainer.children) {
+        console.log(statusItem);
+        deactivateStatusElement(statusItem);
+    }
+}
+
 function uiBeginIpfsCreate() {
+    let statusEl = document.getElementById("status-ipfs-create");
+    console.assert(statusEl);
+
+    activateStatusElement(statusEl);
 }
 
 function uiEndIpfsCreate() {
 }
 
 function uiBeginIpfsStore() {
+    let statusEl = document.getElementById("status-ipfs-store");
+    console.assert(statusEl);
+
+    activateStatusElement(statusEl);
 }
 
 function uiEndIpfsStore(cid) {
 }
 
 function uiBeginEthWalletConnect() {
+    let statusEl = document.getElementById("status-eth-wallet-connect");
+    console.assert(statusEl);
+
+    activateStatusElement(statusEl);
 }
 
 function uiEndEthWalletConnect(account) {
 }
 
 function uiBeginEthTransaction() {
+    let statusEl = document.getElementById("status-eth-transaction");
+    console.assert(statusEl);
+
+    activateStatusElement(statusEl);
 }
 
 function uiUpdateEthTransactionHash(hash) {
@@ -175,3 +219,17 @@ function uiUpdateEthTransactionConfirmation(number) {
 function uiUpdateEthTransactionError(error) {
 }
 
+function uiEndProcessSuccess() {
+    let statusEl = document.getElementById("status-eth-complete");
+    console.assert(statusEl);
+
+    activateStatusElement(statusEl);
+
+    let reloadButton = document.getElementById("reload-button");
+    console.assert(reloadButton);
+    reloadButton.disabled = false;
+}
+
+function loadMain() {
+    window.location.href = "index.html";
+}
