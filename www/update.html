@@ -47,53 +47,69 @@
     <div id="status-messages">
       <div id="status-ipfs-create">
         <div>
-          <p>Creating local IPFS node.</p>
-        </div>
-        <div class="status-progress">
-          <span class="status-waiting"><img src="images/spinner.svg"/></span>
-          <span class="status-success">☑</span>
-          <span class="status-error">☒</span>
+          <div>
+            <p>Creating local IPFS node.</p>
+          </div>
+          <div class="status-progress">
+            <span class="status-waiting"><img src="images/spinner.svg"/></span>
+            <span class="status-success">☑</span>
+            <span class="status-error">☒</span>
+          </div>
         </div>
       </div>
       <div id="status-ipfs-store">
         <div>
-          <p>Storing message to IPFS.</p>
+          <div>
+            <p>Storing message to IPFS.</p>
+          </div>
+          <div class="status-progress">
+            <span class="status-waiting"><img src="images/spinner.svg"/></span>
+            <span class="status-success">☑</span>
+            <span class="status-error">☒</span>
+          </div>
+        </div>
+        <div>
           <p>Content ID: <span id="status-ipfs-cid">(waiting)</span></p>
-        </div>
-        <div class="status-progress">
-          <span class="status-waiting"><img src="images/spinner.svg"/></span>
-          <span class="status-success">☑</span>
-          <span class="status-error">☒</span>
-        </div>
+        </div>          
       </div>
       <div id="status-eth-wallet-connect">
         <div>
-          <p>Connecting to Ethereum wallet.</p>
+          <div>
+            <p>Connecting to Ethereum wallet.</p>
+          </div>
+          <div class="status-progress">
+            <span class="status-waiting"><img src="images/spinner.svg"/></span>
+            <span class="status-success">☑</span>
+            <span class="status-error">☒</span>
+          </div>
+        </div>
+        <div>
           <p>Account: <span id="status-eth-account">(waiting)</span></p>
-        </div>
-        <div class="status-progress">
-          <span class="status-waiting"><img src="images/spinner.svg"/></span>
-          <span class="status-success">☑</span>
-          <span class="status-error">☒</span>
-        </div>
+        </div>          
       </div>
       <div id="status-eth-transaction">
         <div>
-          <p>Storing message hash to Ethereum.</p>
+          <div>
+            <p>Storing message hash to Ethereum.</p>
+          </div>
+          <div class="status-progress">
+            <span class="status-waiting"><img src="images/spinner.svg"/></span>
+            <span class="status-success">☑</span>
+            <span class="status-error">☒</span>
+          </div>
+        </div>
+        <div>
           <p>Transaction hash: <span id="status-eth-tx-hash">(waiting)</span></p>
           <p>Confirmations: <span id="status-eth-confirmations">(waiting)</span></p>
-        </div>
-        <div class="status-progress">
-          <span class="status-waiting"><img src="images/spinner.svg"/></span>
-          <span class="status-success">☑</span>
-          <span class="status-error">☒</span>
-        </div>
+        </div>          
       </div>
       <div id="status-eth-complete">
         <div>
-          <p>Message upload complete.</p>
           <div>
-            <button id="reload-button" onclick="loadMain()", type="button" value="disabled" disabled>Visit your Big Announcement</button>
+            <p>Message upload complete.</p>
+            <div>
+              <button id="reload-button" onclick="loadMain()", type="button" value="disabled" disabled>Visit your Big Announcement</button>
+            </div>
           </div>
         </div>
       </div>

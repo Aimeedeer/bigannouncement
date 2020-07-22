@@ -215,8 +215,6 @@ textarea {
 }
 
 #status-messages > div {
-    display: flex;
-    justify-content: space-between;
     padding: 1rem;
     margin-bottom: 0.5rem;
     border: 1px solid var(--status-border-color);
@@ -224,6 +222,11 @@ textarea {
 
 #status-messages > div:last-child {
     margin-bottom: 0;
+}
+
+#status-messages > div > div:first-child {
+    display: flex;
+    justify-content: space-between;
 }
 
 .status-progress {
@@ -250,7 +253,7 @@ textarea {
     color: var(--status-error-color);
 }
 
-#status-eth-complete > div {
+#status-eth-complete > div > div {
     width: 100%;
     text-align: center;
 }
