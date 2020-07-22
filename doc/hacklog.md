@@ -90,7 +90,7 @@ for await (const file of node.get(cid)) {
     var content = "";
     for await (var chunk of file.content) {
         content = content + chunk;
-	}
+    }
 
     console.log(content.trim());
 }
