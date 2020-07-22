@@ -15,49 +15,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log("Web3.givenProvider:");
     console.log(Web3.givenProvider);
 
-    enableSubmitButton();
+    enableInputs();
 })
 
-function disableSubmitButton() {
-    let button = document.getElementById("submit-button");
-    console.assert(button);
-    button.disabled = true;
-}
+async function submit() {
+    disableInputs();
 
-function enableSubmitButton() {
-    let button = document.getElementById("submit-button");
-    console.assert(button);
-    button.disabled = false;
-}
+    var msginput = document.getElementById("msg-input");
+    console.assert(msginput);
+    var message = msginput.value;
 
-function uiBeginIpfsCreate() {
-}
-
-function uiEndIpfsCreate() {
-}
-
-function uiBeginIpfsStore() {
-}
-
-function uiEndIpfsStore(cid) {
-}
-
-function uiBeginEthWalletConnect() {
-}
-
-function uiEndEthWalletConnect(account) {
-}
-
-function uiBeginEthTransaction() {
-}
-
-function uiUpdateEthTransactionHash(hash) {
-}
-
-function uiUpdateEthTransactionConfirmation(number) {
-}
-
-function uiUpdateEthTransactionError(error) {
+    await storeMessage(contractAbi, contractAddress, message);
 }
 
 async function storeMessage(contractAbi, contractAddress, message) {
@@ -156,12 +124,51 @@ async function storeMessage(contractAbi, contractAddress, message) {
     console.log("waiting on Ethereum");
 }
 
-async function submit() {
-    disableSubmitButton();
-
-    var msginput = document.getElementById("msg-input");
+function disableInputs() {
+    let button = document.getElementById("submit-button");
+    console.assert(button);
+    button.disabled = true;
+    let msginput = document.getElementById("msg-input");
     console.assert(msginput);
-    var message = msginput.value;
-
-    await storeMessage(contractAbi, contractAddress, message);
+    msginput.disabled = true;
 }
+
+function enableInputs() {
+    let button = document.getElementById("submit-button");
+    console.assert(button);
+    button.disabled = false;
+    let msginput = document.getElementById("msg-input");
+    console.assert(msginput);
+    msginput.disabled = false;
+}
+
+function uiBeginIpfsCreate() {
+}
+
+function uiEndIpfsCreate() {
+}
+
+function uiBeginIpfsStore() {
+}
+
+function uiEndIpfsStore(cid) {
+}
+
+function uiBeginEthWalletConnect() {
+}
+
+function uiEndEthWalletConnect(account) {
+}
+
+function uiBeginEthTransaction() {
+}
+
+function uiUpdateEthTransactionHash(hash) {
+}
+
+function uiUpdateEthTransactionConfirmation(number) {
+}
+
+function uiUpdateEthTransactionError(error) {
+}
+
