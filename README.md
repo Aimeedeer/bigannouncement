@@ -8,7 +8,7 @@ authored by the individual with the deepest pockets
 
 > [bigannouncement.crypto](https://bigannouncement.crypto)
 
-> [bigannouncement.news](https://bigannouncement.news)
+> [bigannouncement.news](https://bigannouncement.news) -- auto deploy
 
 Developed during [HackFS 2020],
 it is a minimal project that demonstrates
