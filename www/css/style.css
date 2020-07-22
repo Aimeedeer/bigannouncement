@@ -1,4 +1,4 @@
-:root {
+* {
     box-sizing: border-box;
 }
 
@@ -193,4 +193,40 @@ button {
 textarea {
     width: 100%;
     height: 10em;
+}
+
+
+/* -- update status UI -- */
+
+#status-messages {
+    border: 1px solid var(--blackish);
+    padding: 0.5rem;
+}
+
+#status-messages > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--blackish);
+}
+
+#status-messages > div:last-child {
+    margin-bottom: 0;
+}
+
+.status-progress {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+#status-eth-complete > div {
+    width: 100%;
+    text-align: center;
+}
+
+#reload-button {
+    margin: 1rem;
 }

@@ -44,7 +44,43 @@
       <p><button type="button" onclick="submit()" id="submit-button" value="disabled" disabled>Submit</button></p>
     </div>
 
-    <div id="update-messages">
+    <div id="status-messages">
+      <div id="status-ipfs-create">
+        <div>
+          <p>Creating local IPFS node.</p>
+        </div>
+        <div class="status-progress"><span>...</span></div>
+      </div>
+      <div id="status-ipfs-store">
+        <div>
+          <p>Storing message to IPFS.</p>
+          <p>Content ID: <span id="status-ipfs-cid">(waiting)</span></p>
+        </div>
+        <div class="status-progress"><span>...</span></div>
+      </div>
+      <div id="status-eth-wallet-connect">
+        <div>
+          <p>Connecting to Ethereum wallet.</p>
+          <p>Account: <span id="status-eth-account">(waiting)</span></p>
+        </div>
+        <div class="status-progress"><span>...</span></div>
+      </div>
+      <div id="status-eth-transaction">
+        <div>
+          <p>Storing message hash to Ethereum.</p>
+          <p>Transaction hash: <span id="status-eth-tx-hash">(waiting)</span></p>
+          <p>Confirmations: <span id="status-eth-confirmations">(waiting)</span></p>
+        </div>
+        <div class="status-progress"><span>...</span></div>
+      </div>
+      <div id="status-eth-complete">
+        <div>
+          <p>Message upload complete.</p>
+          <div>
+            <button id="reload-button" type="button" value="disabled" disabled>Visit your Big Announcement</button>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

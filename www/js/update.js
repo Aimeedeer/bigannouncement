@@ -54,6 +54,9 @@ async function storeMessage(contractAbi, contractAddress, message) {
 
     uiBeginIpfsStore();
 
+    console.log('message:');
+    console.log(message);
+
     var addedNode = node.add({
 	    path: 'message.txt',
 	    content: message
