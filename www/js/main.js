@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let contract = new web3.eth.Contract(contractAbi, contractAddress);
     console.log(contract);
 
-    let message = await contract.methods.message().call();
+    let message = await contract.methods.currentContent().call();
     console.log(message);
 
     //copied from update.js

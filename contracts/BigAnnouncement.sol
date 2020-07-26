@@ -1,14 +1,18 @@
 pragma solidity >=0.4.0 <0.7.0;
 
 contract BigAnnouncement {
-    string public message;
-    
+    string public currentContent;
+    uint public currentPrice;
+
     constructor() public {
-        message = "The default message.";
+        currentContent = "";
+        currentPrice = 0;
     }
-    
-    function setMessage(string memory newMessage) public {
-        message = newMessage;
-    }
-    
+
+    function setContent(string memory newContent) public payable {
+        require(msg.value > currentPrice, "Your price shoule be greater than the current price.");
+        
+        currentContent = newContent;
+        currentPrice = msg.value;
+    }  
 }

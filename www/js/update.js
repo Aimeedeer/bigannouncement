@@ -104,8 +104,8 @@ async function storeMessage(contractAbi, contractAddress, message) {
     uiBeginEthTransaction();
 
     contract.methods
-        .setMessage(cid)
-        .send({from: account})
+        .setContent(cid)
+        .send({from: account, value: 210})
 	    .on('transactionHash', function(hash){
 	        console.log('transactionHash');
 	        console.log(hash);
