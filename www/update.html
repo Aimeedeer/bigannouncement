@@ -34,12 +34,26 @@
       <p>
         Your message:
       </p>
-
       <p>
         <textarea id="msg-input" disabled></textarea>
       </p>
     </div>
+    <div>
+      <div id="show-box-price" align="left">
+	<label>
+	  Current price (in Wei):
+	</label>
+	<label id="show-current-price">
+	  </label>
+      </div>
 
+      <div id="update-box-price">
+      <label>
+        Suggest price (in Wei):
+      </label>
+       <input type="text" id="price-input" disabled required></input>
+      </div>
+    </div>
     <div>
       <p><button type="button" onclick="submit()" id="submit-button" value="disabled" disabled>Submit</button></p>
     </div>

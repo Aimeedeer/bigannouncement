@@ -6,6 +6,36 @@ console.assert(Ipfs);
 console.assert(Web3);
 
 document.addEventListener('DOMContentLoaded', async () => {
+    let web3 = new Web3(Web3.givenProvider);
+
+    console.log('web3:');
+    console.log(web3);
+    
+    let contract = new web3.eth.Contract(contractAbi, contractAddress);
+    console.log("contract:");
+    console.log(contract);
+    window.contract = contract;
+    
+    let price = await contract.methods.currentPrice().call();
+    console.log(price);
+
+    document.getElementById("show-current-price").innerText = price;
+    document.getElementById("price-input").value = parseInt(price) + 10;
+    
+    let accounts = await web3.eth.requestAccounts();
+
+    console.log("accounts:");
+    console.log(accounts);
+    
+    if (accounts.length < 1) {
+        // todo
+    }
+
+    let account = accounts[0];
+    console.log("account:");
+    console.log(account);
+    window.account = account;
+    
     if (typeof Web3 == "undefined") {
         // todo
     }
@@ -16,31 +46,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(Web3.givenProvider);
 
     enableInputs();
+
+
 })
 
 async function submit() {
     disableInputs();
 
-    var msginput = document.getElementById("msg-input");
+    let msginput = document.getElementById("msg-input");
     console.assert(msginput);
-    var message = msginput.value;
+    let message = msginput.value;
+    let priceinput = document.getElementById("price-input");
+    console.assert(priceinput);
+    priceinput = parseInt(priceinput.value);
 
-    await storeMessage(contractAbi, contractAddress, message);
+    await storeMessage(contractAbi, contractAddress, message, priceinput);
 }
 
-async function storeMessage(contractAbi, contractAddress, message) {
+async function storeMessage(contractAbi, contractAddress, message, priceinput){
 
     console.assert(contractAbi);
     console.assert(contractAddress);
     console.assert(typeof message != "undefined");
-
-
+    console.assert(priceinput);
+    
     uiBeginProcess();
 
     if (Web3.givenProvider == null) {
         // todo
     }
-
 
     uiBeginIpfsCreate();
 
@@ -55,57 +89,31 @@ async function storeMessage(contractAbi, contractAddress, message) {
 
     uiEndIpfsCreate();
 
-
     uiBeginIpfsStore();
 
     console.log('message:');
     console.log(message);
 
-    var addedNode = node.add({
+    let addedNode = node.add({
 	    path: 'message.txt',
 	    content: message
     });
-    var addedNode = await addedNode;
-    var cid = addedNode.cid.toString();
+    addedNode = await addedNode;
+    let cid = addedNode.cid.toString();
     
     console.log('Added file:', addedNode.path, addedNode.cid);
 
     uiEndIpfsStore(cid);
-    
 
     uiBeginEthWalletConnect();
     
-    var web3 = new Web3(Web3.givenProvider);
-
-    console.log('web3:');
-    console.log(web3);
-    
-    var contract = new web3.eth.Contract(contractAbi, contractAddress);
-    console.log("contract:");
-    console.log(contract);
-
-
-    var accounts = await web3.eth.requestAccounts();
-
-    console.log("accounts:");
-    console.log(accounts);
-
-    if (accounts.length < 1) {
-        // todo
-    }
-
-    var account = accounts[0];
-    console.log("account:");
-    console.log(account);
-
     uiEndEthWalletConnect(account);
-
 
     uiBeginEthTransaction();
 
     contract.methods
         .setContent(cid)
-        .send({from: account, value: 210})
+        .send({from: account, value: priceinput})
 	    .on('transactionHash', function(hash){
 	        console.log('transactionHash');
 	        console.log(hash);
@@ -142,6 +150,9 @@ function disableInputs() {
     let msginput = document.getElementById("msg-input");
     console.assert(msginput);
     msginput.disabled = true;
+    let priceinput = document.getElementById("price-input");
+    console.assert(priceinput);
+    priceinput.disabled = true;
 }
 
 function enableInputs() {
@@ -151,15 +162,18 @@ function enableInputs() {
     let msginput = document.getElementById("msg-input");
     console.assert(msginput);
     msginput.disabled = false;
+    let priceinput = document.getElementById("price-input");
+    console.assert(priceinput);
+    priceinput.disabled = false;
 }
 
 function deactivateStatusElement(el) {
     el.classList.add("inactive");
 
     // Find the "status-progress" item
-    for (var progress of el.querySelectorAll(".status-progress")) {
+    for (let progress of el.querySelectorAll(".status-progress")) {
         // Hide all the subitems
-        for (var progressChild of progress.children) {
+        for (let progressChild of progress.children) {
             progressChild.style.display = "none";
         }
     }
@@ -171,13 +185,13 @@ function activateStatusElement(el) {
 
 function toggleStatusWorking(el) {
     // Find the "status-progress" item
-    for (var progress of el.querySelectorAll(".status-progress")) {
+    for (let progress of el.querySelectorAll(".status-progress")) {
         // Hide all the subitems
-        for (var progressChild of progress.children) {
+        for (let progressChild of progress.children) {
             progressChild.style.display = "none";
         }
         // Show the "waiting" item
-        for (var waitingChild of progress.querySelectorAll(".status-waiting")) {
+        for (let waitingChild of progress.querySelectorAll(".status-waiting")) {
             waitingChild.style.display = "inline";
         }
     }
@@ -185,13 +199,13 @@ function toggleStatusWorking(el) {
 
 function toggleStatusSuccess(el) {
     // Find the "status-progress" item
-    for (var progress of el.querySelectorAll(".status-progress")) {
+    for (let progress of el.querySelectorAll(".status-progress")) {
         // Hide all the subitems
-        for (var progressChild of progress.children) {
+        for (let progressChild of progress.children) {
             progressChild.style.display = "none";
         }
         // Show the "success" item
-        for (var waitingChild of progress.querySelectorAll(".status-success")) {
+        for (let waitingChild of progress.querySelectorAll(".status-success")) {
             waitingChild.style.display = "inline";
         }
     }
