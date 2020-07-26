@@ -35,4 +35,4 @@ and what we are learning.
 - [x] Store message to IPFS using js-ipfs
 - [x] Store and retrieve message hash from Ethereum
 - [x] Retrieve and display message from IPFS
-- [ ] Implement bidding on message in ETH
+- [x] Implement bidding on message in ETH
