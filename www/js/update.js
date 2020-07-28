@@ -16,11 +16,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(contract);
     window.contract = contract;
     
-    let price = await contract.methods.currentPrice().call();
-    console.log(price);
+    let showPrice = await contract.methods.currentPrice().call();
+    console.log(showPrice);
 
-    document.getElementById("show-current-price").innerText = price;
-    document.getElementById("price-input").value = parseInt(price) + 10;
+    document.getElementById("show-current-price").innerText = showPrice;
+    document.getElementById("price-input").value = parseInt(showPrice) + 10;
+    window.showPrice = showPrice;
     
     let accounts = await web3.eth.requestAccounts();
 
@@ -46,8 +47,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(Web3.givenProvider);
 
     enableInputs();
-
-
 })
 
 async function submit() {
@@ -56,14 +55,39 @@ async function submit() {
     let msginput = document.getElementById("msg-input");
     console.assert(msginput);
     let message = msginput.value;
-    let priceinput = document.getElementById("price-input");
+    let priceinput = document.getElementById("price-input").value;
     console.assert(priceinput);
-    priceinput = parseInt(priceinput.value);
 
-    await storeMessage(contractAbi, contractAddress, message, priceinput);
+    if (!validNumber(priceinput)) {
+	document.getElementById("price-alarming").innerText = " * Please fill in number.";
+	enableInputs();
+    } else {
+	let price = parseInt(priceinput);
+
+	if (price <= showPrice) {
+	    document.getElementById("price-alarming").innerText = " * Your price shall be greater than the current";
+	    enableInputs();
+	} else {	
+	    await storeMessage(contractAbi,
+			       contractAddress,
+			       message,
+			       price);
+	} 
+    }
 }
 
-async function storeMessage(contractAbi, contractAddress, message, priceinput){
+function validNumber(inputNumber) {
+    let regular = /^[0-9]+.?[0-9]*$/;
+    console.log(inputNumber);
+    
+    if (regular.test(inputNumber)) {
+	return true;
+    } else {
+	return false;
+    }
+} 
+    
+async function storeMessage(contractAbi, contractAddress, message, priceinput) {
 
     console.assert(contractAbi);
     console.assert(contractAddress);
