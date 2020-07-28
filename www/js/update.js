@@ -86,7 +86,7 @@ function validNumber(inputNumber) {
 	return false;
     }
 } 
-    
+
 async function storeMessage(contractAbi, contractAddress, message, priceinput) {
 
     console.assert(contractAbi);
@@ -119,8 +119,8 @@ async function storeMessage(contractAbi, contractAddress, message, priceinput) {
     console.log(message);
 
     let addedNode = node.add({
-	    path: 'message.txt',
-	    content: message
+	path: 'message.txt',
+	content: message
     });
     addedNode = await addedNode;
     let cid = addedNode.cid.toString();
@@ -138,31 +138,31 @@ async function storeMessage(contractAbi, contractAddress, message, priceinput) {
     contract.methods
         .setContent(cid)
         .send({from: account, value: priceinput})
-	    .on('transactionHash', function(hash){
-	        console.log('transactionHash');
-	        console.log(hash);
+	.on('transactionHash', function(hash){
+	    console.log('transactionHash');
+	    console.log(hash);
             uiUpdateEthTransactionHash(hash);
-	    })
-	    .on('receipt', function(receipt){
-	        console.log('receipt');
-	        console.log(receipt);
+	})
+	.on('receipt', function(receipt){
+	    console.log('receipt');
+	    console.log(receipt);
             // todo
-	    })
-	    .on('confirmation', function(confirmationNumber, receipt){
-	        console.log('confirmation');
-	        console.log(confirmationNumber);
-	        console.log(receipt);
+	})
+	.on('confirmation', function(confirmationNumber, receipt){
+	    console.log('confirmation');
+	    console.log(confirmationNumber);
+	    console.log(receipt);
             uiUpdateEthTransactionConfirmation(confirmationNumber);
 
             if (confirmationNumber == 0) {
                 uiEndProcessSuccess();
             }
-	    })
-	    .on('error', function(error){
-	        console.log('error');
-	        console.log(error);
+	})
+	.on('error', function(error){
+	    console.log('error');
+	    console.log(error);
             uiUpdateEthTransactionError(error);
-	    });
+	});
 
     console.log("waiting on Ethereum");
 }
