@@ -163,6 +163,10 @@ async function storeMessage(contractAbi, contractAddress, message, priceinput) {
 	    .on('error', function(error){
 	        console.log('error');
 	        console.log(error);
+            if (error.receipt) {
+                console.log('error receipt');
+                console.log(error.receipt);
+            }
             uiUpdateEthTransactionError(error);
 	    });
 
@@ -221,6 +225,10 @@ function toggleStatusWorking(el) {
             waitingChild.style.display = "inline";
         }
     }
+    // Hide the error message
+    for (let progress of el.querySelectorAll(".status-error-msg")) {
+        progress.style.display = "none";
+    }
 }
 
 function toggleStatusSuccess(el) {
@@ -233,6 +241,28 @@ function toggleStatusSuccess(el) {
         // Show the "success" item
         for (let waitingChild of progress.querySelectorAll(".status-success")) {
             waitingChild.style.display = "inline";
+        }
+    }
+    // Hide the error message
+    for (let progress of el.querySelectorAll(".status-error-msg")) {
+        progress.style.display = "none";
+    }
+}
+
+function toggleStatusError(el, msg) {
+    for (let progress of el.querySelectorAll(".status-progress")) {
+        for (let progressChild of progress.children) {
+            progressChild.style.display = "none";
+        }
+        for (let waitingChild of progress.querySelectorAll(".status-error")) {
+            waitingChild.style.display = "inline";
+        }
+    }
+    for (let msgEl of el.querySelectorAll(".status-error-msg")) {
+        msgEl.style.display = "block";
+        let para = msgEl.firstElementChild;
+        if (para && para.tagName == "P") {
+            para.innerText = "Error: " + msg;
         }
     }
 }
@@ -342,6 +372,13 @@ function uiUpdateEthTransactionSuccess() {
 }
 
 function uiUpdateEthTransactionError(error) {
+    let statusEl = document.getElementById("status-eth-transaction");
+    console.assert(statusEl);
+
+    console.assert(error.message);
+    let errMsg = error.message;
+
+    toggleStatusError(statusEl, errMsg);
 }
 
 function uiEndProcessSuccess() {

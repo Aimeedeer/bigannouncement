@@ -269,3 +269,12 @@ textarea {
 #status-messages > div.inactive {
     border: 1px solid var(--status-inactive-color);
 }
+
+.status-error-msg {
+    display: none;
+    border: 1px solid var(--status-error-color);
+}
+
+.status-error-msg > p {
+    margin: 1rem;
+}
