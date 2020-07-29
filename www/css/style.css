@@ -61,6 +61,11 @@ header h1 {
     margin-bottom: 0;
 }
 
+header h1 a {
+    text-decoration: none;
+    color: var(--header-text-color);
+}
+
 main {
     padding: 4rem 0 4rem 0;
 }
