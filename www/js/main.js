@@ -1,5 +1,7 @@
 'use strict'
 
+console.assert(marked);
+
 document.addEventListener('DOMContentLoaded', async () => {
     let web3 = new Web3(Web3.givenProvider);
 
@@ -35,6 +37,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("message:");
 	    console.log(content);
 
-        document.getElementById("msg-announcement").innerText = content;
+        let md = marked(content);
+
+        document.getElementById("msg-announcement").innerHTML = md;
     }
 })
