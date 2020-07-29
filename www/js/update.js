@@ -146,17 +146,19 @@ async function storeMessage(contractAbi, contractAddress, message, priceinput) {
 	    .on('receipt', function(receipt){
 	        console.log('receipt');
 	        console.log(receipt);
-            // todo
+
+            let success = receipt.status == true;
+            if (success) {
+                uiUpdateEthTransactionSuccess();
+                uiEndProcessSuccess();
+            } else {
+            }
 	    })
 	    .on('confirmation', function(confirmationNumber, receipt){
 	        console.log('confirmation');
 	        console.log(confirmationNumber);
-	        console.log(receipt);
+	        //console.log(receipt);
             uiUpdateEthTransactionConfirmation(confirmationNumber);
-
-            if (confirmationNumber == 0) {
-                uiEndProcessSuccess();
-            }
 	    })
 	    .on('error', function(error){
 	        console.log('error');
@@ -327,14 +329,16 @@ function uiUpdateEthTransactionHash(hash) {
 function uiUpdateEthTransactionConfirmation(number) {
     console.assert(typeof number == "number");
     
+    let confEl = document.getElementById("status-eth-confirmations");
+    console.assert(confEl);
+    confEl.textContent = number + 1;
+}
+
+function uiUpdateEthTransactionSuccess() {
     let statusEl = document.getElementById("status-eth-transaction");
     console.assert(statusEl);
 
     toggleStatusSuccess(statusEl);
-
-    let confEl = document.getElementById("status-eth-confirmations");
-    console.assert(confEl);
-    confEl.textContent = number + 1;
 }
 
 function uiUpdateEthTransactionError(error) {
