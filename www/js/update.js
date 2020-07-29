@@ -210,7 +210,11 @@ function enableInputs() {
 }
 
 function deactivateStatusElement(el) {
-    el.classList.add("inactive");
+    el.classList.remove("status-waiting");
+    el.classList.remove("status-success");
+    el.classList.remove("status-error");
+
+    el.classList.add("status-inactive");
 
     // Find the "status-progress" item
     for (let progress of el.querySelectorAll(".status-progress")) {
@@ -221,11 +225,10 @@ function deactivateStatusElement(el) {
     }
 }
 
-function activateStatusElement(el) {
-    el.classList.remove("inactive");
-}
-
 function toggleStatusWorking(el) {
+    deactivateStatusElement(el);
+    el.classList.add("status-waiting");
+    
     // Find the "status-progress" item
     for (let progress of el.querySelectorAll(".status-progress")) {
         // Hide all the subitems
@@ -244,6 +247,9 @@ function toggleStatusWorking(el) {
 }
 
 function toggleStatusSuccess(el) {
+    deactivateStatusElement(el);
+    el.classList.add("status-success");
+
     // Find the "status-progress" item
     for (let progress of el.querySelectorAll(".status-progress")) {
         // Hide all the subitems
@@ -262,6 +268,9 @@ function toggleStatusSuccess(el) {
 }
 
 function toggleStatusError(el, msg) {
+    deactivateStatusElement(el);
+    el.classList.add("status-error");
+
     for (let progress of el.querySelectorAll(".status-progress")) {
         for (let progressChild of progress.children) {
             progressChild.style.display = "none";
@@ -299,7 +308,6 @@ function uiBeginIpfsCreate() {
     let statusEl = document.getElementById("status-ipfs-create");
     console.assert(statusEl);
 
-    activateStatusElement(statusEl);
     toggleStatusWorking(statusEl);
 }
 
@@ -314,7 +322,6 @@ function uiBeginIpfsStore() {
     let statusEl = document.getElementById("status-ipfs-store");
     console.assert(statusEl);
 
-    activateStatusElement(statusEl);
     toggleStatusWorking(statusEl);
 }
 
@@ -335,7 +342,6 @@ function uiBeginEthWalletConnect() {
     let statusEl = document.getElementById("status-eth-wallet-connect");
     console.assert(statusEl);
 
-    activateStatusElement(statusEl);
     toggleStatusWorking(statusEl);
 }
 
@@ -356,7 +362,6 @@ function uiBeginEthTransaction() {
     let statusEl = document.getElementById("status-eth-transaction");
     console.assert(statusEl);
 
-    activateStatusElement(statusEl);
     toggleStatusWorking(statusEl);
 }
 
@@ -403,7 +408,7 @@ function uiEndProcessSuccess() {
     let statusEl = document.getElementById("status-eth-complete");
     console.assert(statusEl);
 
-    activateStatusElement(statusEl);
+    toggleStatusSuccess(statusEl);
 
     let reloadButton = document.getElementById("reload-button");
     console.assert(reloadButton);
