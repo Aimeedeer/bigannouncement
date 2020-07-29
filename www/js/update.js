@@ -65,20 +65,20 @@ async function submit() {
     console.assert(priceinput);
     
     if (!validNumber(priceinput)) {
-	    document.getElementById("price-alarming").innerText = " * Please fill in number.";
-	    enableInputs();
+	document.getElementById("price-alarming").innerText = " * Please fill in number.";
+	enableInputs();
     } else {
-	    let price = web3.utils.toWei(priceinput, 'ether');
+	let price = web3.utils.toWei(priceinput, 'ether');
 
-	    if (price <= currentPriceWei) {
-	        document.getElementById("price-alarming").innerText = " * Your price shall be greater than the current";
-	        enableInputs();
+	if (web3.utils.toBN(price).lte(web3.utils.toBN(currentPriceWei))) {
+	    document.getElementById("price-alarming").innerText = " * Your price shall be greater than the current";
+	    enableInputs();
         } else {
-	        await storeMessage(contractAbi,
-			                   contractAddress,
-			                   message,
-			                   price);
-	    }
+	    await storeMessage(contractAbi,
+			       contractAddress,
+			       message,
+			       price);
+	}
     }
 }
 
@@ -87,9 +87,9 @@ function validNumber(inputNumber) {
     console.log(inputNumber);
     
     if (regular.test(inputNumber)) {
-	    return true;
+	return true;
     } else {
-	    return false;
+	return false;
     }
 } 
 
