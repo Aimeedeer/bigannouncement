@@ -8,6 +8,8 @@ console.assert(Web3);
 document.addEventListener('DOMContentLoaded', async () => {
     let web3 = new Web3(Web3.givenProvider);
 
+    web3.eth.handleRevert = true;
+
     console.log('web3:');
     console.log(web3);
     window.web3 = web3;
@@ -172,6 +174,10 @@ async function storeMessage(contractAbi, contractAddress, message, priceinput) {
             if (error.receipt) {
                 console.log('error receipt');
                 console.log(error.receipt);
+            }
+            if (error.reason) {
+                console.log('reason');
+                console.log(error.reason);
             }
             uiUpdateEthTransactionError(error);
 	    });
@@ -381,8 +387,14 @@ function uiUpdateEthTransactionError(error) {
     let statusEl = document.getElementById("status-eth-transaction");
     console.assert(statusEl);
 
-    console.assert(error.message);
-    let errMsg = error.message;
+    let errMsg = JSON.stringify(error);
+
+    if (error.message) {
+        errMsg = error.message;
+    }
+    if (error.reason) {
+        errMsg = error.reason;
+    }
 
     toggleStatusError(statusEl, errMsg);
 }
