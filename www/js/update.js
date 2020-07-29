@@ -65,6 +65,7 @@ async function submit() {
     console.assert(priceinput);
     
     if (!validNumber(priceinput)) {
+<<<<<<< HEAD
 	document.getElementById("price-alarming").innerText = " * Please fill in number.";
 	enableInputs();
     } else {
@@ -72,13 +73,22 @@ async function submit() {
 
 	if (price <= currentPriceWei) {
 	    document.getElementById("price-alarming").innerText = " * Your price shall be greater than the current";
+=======
+	    document.getElementById("price-alarming").innerText = " * Please fill in number.";
+>>>>>>> b08e806c5ca07c216c608578ab33e9457014ef3c
 	    enableInputs();
-	} else {	
-	    await storeMessage(contractAbi,
-			       contractAddress,
-			       message,
-			       price);
-	} 
+    } else {
+	    let price = parseInt(priceinput);
+
+	    if (price <= showPrice) {
+	        document.getElementById("price-alarming").innerText = " * Your price shall be greater than the current";
+	        enableInputs();
+	    } else {
+	        await storeMessage(contractAbi,
+			                   contractAddress,
+			                   message,
+			                   price);
+	    }
     }
 }
 
@@ -87,9 +97,9 @@ function validNumber(inputNumber) {
     console.log(inputNumber);
     
     if (regular.test(inputNumber)) {
-	return true;
+	    return true;
     } else {
-	return false;
+	    return false;
     }
 } 
 
@@ -125,8 +135,8 @@ async function storeMessage(contractAbi, contractAddress, message, priceinput) {
     console.log(message);
 
     let addedNode = node.add({
-	path: 'message.txt',
-	content: message
+	    path: 'message.txt',
+	    content: message
     });
     addedNode = await addedNode;
     let cid = addedNode.cid.toString();
@@ -144,31 +154,33 @@ async function storeMessage(contractAbi, contractAddress, message, priceinput) {
     contract.methods
         .setContent(cid)
         .send({from: account, value: priceinput})
-	.on('transactionHash', function(hash){
-	    console.log('transactionHash');
-	    console.log(hash);
+	    .on('transactionHash', function(hash){
+	        console.log('transactionHash');
+	        console.log(hash);
             uiUpdateEthTransactionHash(hash);
-	})
-	.on('receipt', function(receipt){
-	    console.log('receipt');
-	    console.log(receipt);
-            // todo
-	})
-	.on('confirmation', function(confirmationNumber, receipt){
-	    console.log('confirmation');
-	    console.log(confirmationNumber);
-	    console.log(receipt);
-            uiUpdateEthTransactionConfirmation(confirmationNumber);
+	    })
+	    .on('receipt', function(receipt){
+	        console.log('receipt');
+	        console.log(receipt);
 
-            if (confirmationNumber == 0) {
+            let success = receipt.status == true;
+            if (success) {
+                uiUpdateEthTransactionSuccess();
                 uiEndProcessSuccess();
+            } else {
             }
-	})
-	.on('error', function(error){
-	    console.log('error');
-	    console.log(error);
+	    })
+	    .on('confirmation', function(confirmationNumber, receipt){
+	        console.log('confirmation');
+	        console.log(confirmationNumber);
+	        //console.log(receipt);
+            uiUpdateEthTransactionConfirmation(confirmationNumber);
+	    })
+	    .on('error', function(error){
+	        console.log('error');
+	        console.log(error);
             uiUpdateEthTransactionError(error);
-	});
+	    });
 
     console.log("waiting on Ethereum");
 }
@@ -333,14 +345,16 @@ function uiUpdateEthTransactionHash(hash) {
 function uiUpdateEthTransactionConfirmation(number) {
     console.assert(typeof number == "number");
     
+    let confEl = document.getElementById("status-eth-confirmations");
+    console.assert(confEl);
+    confEl.textContent = number + 1;
+}
+
+function uiUpdateEthTransactionSuccess() {
     let statusEl = document.getElementById("status-eth-transaction");
     console.assert(statusEl);
 
     toggleStatusSuccess(statusEl);
-
-    let confEl = document.getElementById("status-eth-confirmations");
-    console.assert(confEl);
-    confEl.textContent = number + 1;
 }
 
 function uiUpdateEthTransactionError(error) {

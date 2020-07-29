@@ -1,5 +1,8 @@
 'use strict'
 
+console.assert(marked);
+console.assert(DOMPurify);
+
 document.addEventListener('DOMContentLoaded', async () => {
     let web3 = new Web3(Web3.givenProvider);
 
@@ -35,6 +38,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("message:");
 	    console.log(content);
 
-        document.getElementById("msg-announcement").innerText = content;
+        let htmlContent = marked(content);
+        let sanitizedContent = DOMPurify.sanitize(htmlContent);
+
+        document.getElementById("msg-announcement").innerHTML = sanitizedContent;
     }
 })
