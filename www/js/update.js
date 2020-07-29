@@ -65,25 +65,15 @@ async function submit() {
     console.assert(priceinput);
     
     if (!validNumber(priceinput)) {
-<<<<<<< HEAD
-	document.getElementById("price-alarming").innerText = " * Please fill in number.";
-	enableInputs();
-    } else {
-	let price = web3.utils.toWei(priceinput, 'ether');
-
-	if (price <= currentPriceWei) {
-	    document.getElementById("price-alarming").innerText = " * Your price shall be greater than the current";
-=======
 	    document.getElementById("price-alarming").innerText = " * Please fill in number.";
->>>>>>> b08e806c5ca07c216c608578ab33e9457014ef3c
 	    enableInputs();
     } else {
-	    let price = parseInt(priceinput);
+	    let price = web3.utils.toWei(priceinput, 'ether');
 
-	    if (price <= showPrice) {
+	    if (price <= currentPriceWei) {
 	        document.getElementById("price-alarming").innerText = " * Your price shall be greater than the current";
 	        enableInputs();
-	    } else {
+        } else {
 	        await storeMessage(contractAbi,
 			                   contractAddress,
 			                   message,
