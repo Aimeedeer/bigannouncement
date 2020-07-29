@@ -6,6 +6,11 @@ This is a brief log of our daily work on
 [tba]: https://github.com/Aimeedeer/bigannouncement
 [HackFS 2020]: https://hackfs.com/
 
+## 2020/07/28
+
+We finished our MVP and started to test and polish the UI.
+
+
 ## 2020/7/21
 
 Today we are trying to write to our Ethereum contract.

@@ -1,24 +1,24 @@
 'use strict'
 
-const contractAddress = '0x83bb257cad2746be26256ae359c306fefea4e2f7';
+const contractAddress = '0xffa5bA1bD9cdd0cdaDB0A330a3175bc3b5CC87e0';
 const contractAbi = [
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "newContent",
-				"type": "string"
-			}
-		],
-		"name": "setContent",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "contractOwner",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
 		"inputs": [],
@@ -45,6 +45,40 @@ const contractAbi = [
 		],
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "sendAmount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "newContent",
+				"type": "string"
+			}
+		],
+		"name": "setContent",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
 	}
 ]
+
 
