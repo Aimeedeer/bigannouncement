@@ -10,18 +10,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     console.log('web3:');
     console.log(web3);
+    window.web3 = web3;
     
     let contract = new web3.eth.Contract(contractAbi, contractAddress);
     console.log("contract:");
     console.log(contract);
     window.contract = contract;
     
-    let showPrice = await contract.methods.currentPrice().call();
-    console.log(showPrice);
+    let currentPriceWei = await contract.methods.currentPrice().call();
+    let currentPriceEth = web3.utils.fromWei(currentPriceWei, 'ether');
+    window.currentPriceWei = currentPriceWei;
 
-    document.getElementById("show-current-price").innerText = showPrice;
-    document.getElementById("price-input").value = parseInt(showPrice) + 10;
-    window.showPrice = showPrice;
+    let suggestPriceWei = web3.utils.toBN(currentPriceWei).add(web3.utils.toBN(5000000000));
+    let suggestPriceEth = web3.utils.fromWei(suggestPriceWei, 'ether');
+    
+    document.getElementById("show-current-price").innerText = currentPriceEth;
+    document.getElementById("price-input").value = suggestPriceEth;
     
     let accounts = await web3.eth.requestAccounts();
 
@@ -47,6 +51,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(Web3.givenProvider);
 
     enableInputs();
+        
+    console.log(web3.utils.toWei(currentPriceEth, 'ether'));
 })
 
 async function submit() {
@@ -57,9 +63,19 @@ async function submit() {
     let message = msginput.value;
     let priceinput = document.getElementById("price-input").value;
     console.assert(priceinput);
-
+    
     if (!validNumber(priceinput)) {
+<<<<<<< HEAD
+	document.getElementById("price-alarming").innerText = " * Please fill in number.";
+	enableInputs();
+    } else {
+	let price = web3.utils.toWei(priceinput, 'ether');
+
+	if (price <= currentPriceWei) {
+	    document.getElementById("price-alarming").innerText = " * Your price shall be greater than the current";
+=======
 	    document.getElementById("price-alarming").innerText = " * Please fill in number.";
+>>>>>>> b08e806c5ca07c216c608578ab33e9457014ef3c
 	    enableInputs();
     } else {
 	    let price = parseInt(priceinput);
