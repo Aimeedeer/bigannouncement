@@ -335,7 +335,7 @@ function uiEndIpfsStore(cid) {
 
     let cidEl = document.getElementById("status-ipfs-cid");
     console.assert(cidEl);
-    cidEl.textContent = cid;
+    insertLinkedText(cidEl, cid, LinkedTextType.Ipfs);
 }
 
 function uiBeginEthWalletConnect() {
@@ -355,7 +355,7 @@ function uiEndEthWalletConnect(account) {
 
     let accountEl = document.getElementById("status-eth-account");
     console.assert(accountEl);
-    accountEl.textContent = account;
+    insertLinkedText(accountEl, account, LinkedTextType.EthAccount);
 }
 
 function uiBeginEthTransaction() {
@@ -370,7 +370,7 @@ function uiUpdateEthTransactionHash(hash) {
 
     let hashEl = document.getElementById("status-eth-tx-hash");
     console.assert(hashEl);
-    hashEl.textContent = hash;
+    insertLinkedText(hashEl, hash, LinkedTextType.EthTx);
 }
 
 function uiUpdateEthTransactionConfirmation(number) {
@@ -418,3 +418,24 @@ function uiEndProcessSuccess() {
 function loadMain() {
     window.location.href = "index.html";
 }
+
+const LinkedTextType = {
+    Ipfs: 1,
+    EthAccount: 2,
+    EthTx: 3,
+}
+
+function insertLinkedText(el, text, type) {
+    let url = "https://example.com";
+    if (type == LinkedTextType.Ipfs) {
+        url = `https://ipfs.io/ipfs/${text}`
+    } else if (type == LinkedTextType.EthAccount) {
+        url = `https://ropsten.etherscan.io/address/${text}`
+    } else if (type == LinkedTextType.EthTx) {
+        url = `https://ropsten.etherscan.io/tx/${text}`
+    }
+
+    let html = `<a href=${url}>${text}</a>`;
+    el.innerHTML = html;
+}
+

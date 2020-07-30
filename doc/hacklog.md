@@ -6,9 +6,28 @@ This is a brief log of our daily work on
 [tba]: https://github.com/Aimeedeer/bigannouncement
 [HackFS 2020]: https://hackfs.com/
 
-## 2020/07/28
 
-We finished our MVP and started to test and polish the UI.
+## 2020/07/29
+
+It took a long time to figure out how to use `handleRevert`
+in web3.js to get proper error messages out of solidity scripts.
+There's essentially no documentation.
+I eventually figured out that, if this flag is set
+on the `eth` object,
+the contract's revert message is added as a `reason`
+key to the `error` object that is a result of executing
+a transaction.
+
+I figured this out by reading a [GitHub issue][eiss],
+which is a common way to troubleshoot open source,
+but really shouldn't be necessary for such a basic library feature.
+
+That issue linked to [unit test examples][ute]
+that I have yet to read,
+but am leaving here for my and others' future use.
+
+[eiss]: https://github.com/ethereum/web3.js/issues/3327
+[ute]: https://github.com/ethereum/web3.js/blob/1.x/test/e2e.method.send.js#L192-L324
 
 
 
