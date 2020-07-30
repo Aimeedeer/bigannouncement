@@ -321,3 +321,10 @@ textarea {
 .status-error-msg > p {
     margin: 1rem;
 }
+
+#status-ipfs-cid,
+#status-eth-account,
+#status-eth-tx-hash,
+#status-eth-confirmations {
+    font-family: mono;
+}
