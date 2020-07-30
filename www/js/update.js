@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentPriceEth = web3.utils.fromWei(currentPriceWei, 'ether');
     window.currentPriceWei = currentPriceWei;
 
-    let suggestPriceWei = web3.utils.toBN(currentPriceWei).add(web3.utils.toBN(5000000000));
+    let suggestPriceWei = web3.utils.toBN(currentPriceWei).add(web3.utils.toBN(1000000000000000));
     let suggestPriceEth = web3.utils.fromWei(suggestPriceWei, 'ether');
     
     document.getElementById("show-current-price").innerText = currentPriceEth;

@@ -6,6 +6,30 @@ This is a brief log of our daily work on
 [tba]: https://github.com/Aimeedeer/bigannouncement
 [HackFS 2020]: https://hackfs.com/
 
+## 2020/07/30
+
+We updated the Solidity contract by adding a withdraw function.
+This is the function for the creator (us) to withdraw Eth from the smart contract.
+
+On the update.html page, we show the price in Eth with web3.js's `toWei` and `fromWei`.
+We use web3.js's built-in BN(big number) library to deal with prices.
+
+We met another Fleek bug:
+
+The Fleek auto deploys our website to IPFS once there is an update on GitHub repo.
+It generated a new IPFS hash and connected to
+
+[bigannouncement.on.fleek.co](https://bigannouncement.on.fleek.co/)
+
+But it didn't update the content linked to DNS domain automatically:
+
+[bigannouncement.news](https://bigannouncement.news)
+
+
+We found out that if we click `Trigger deploy`,
+the IPFS content will be updated to our DNS domain.
+
+
 
 ## 2020/07/29
 
