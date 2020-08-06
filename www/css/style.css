@@ -328,3 +328,15 @@ textarea {
 #status-eth-confirmations {
     font-family: mono;
 }
+
+
+/* -- main page spinner -- */
+
+#msg-spinner {
+    text-align: center;
+}
+
+#msg-spinner > img {
+    width: 5rem;
+    height: 5rem;
+}

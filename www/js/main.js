@@ -42,5 +42,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         let sanitizedContent = DOMPurify.sanitize(htmlContent);
 
         document.getElementById("msg-announcement").innerHTML = sanitizedContent;
+        document.getElementById("msg-spinner").style.display = "none";
     }
 })
