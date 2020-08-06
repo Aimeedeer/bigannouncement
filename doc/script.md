@@ -45,4 +45,17 @@ B: Let's give it a try.
 
 
 
-## Additional
+## Future work
+
+B: The Big Announcement isn't itself much of a product,
+but more of a teaching tool.
+
+B: We are going to polish the tiny code base such that
+it can be used as an example for beginner D-App developers.
+
+A: We are also going to be blogging about our experience
+building this project.
+
+B: For more about The Big Announcement,
+or to try it for yourself,
+check out the GitHub link below.
